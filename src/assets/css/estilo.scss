@@ -1,0 +1,44 @@
+////// Banner
+
+.logo img{
+    width: 30%;
+    padding-left: auto;
+    flex: 1 1 auto;
+}
+#boton-menu{
+    float:left;
+    margin-right: 27%;
+}
+
+/////// Tabla Afiliados
+.btn-tabla-agregar{
+   
+    
+}
+.btn-tabla-eliminar{
+ 
+}
+.btn-tabla-editar{
+
+}
+
+#agregar{
+    background-color: #4e321a;
+}
+footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white; }
+body{
+    background-color: rgb(41, 25, 16);
+}
+.Login {
+  background: url("../images/fondo.jpg") no-repeat 40% 50%;
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 70%; }
