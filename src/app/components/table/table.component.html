@@ -5,8 +5,8 @@
             <table class="table table-responsive table-inverse">
                 <!-- table content here -->
                 <thead>
-                    <tr>
-                        <th><button type="button" class="btn btn-tabla-agregar btn- btn-success" data-toggle="collapse" data-target="#agregar" aria-expanded="false" aria-controls="agregar"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button></th>
+                    <tr *ngIf="!this.nw">
+                        <th><button (click)="add_nw()" type="button" class="btn btn-tabla-agregar btn- btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button></th>
                         <th>#</th>
                         <th>ID</th>
                         <th>Nombre</th>
@@ -16,30 +16,38 @@
                         <th>Banco</th>
                         <th>Telefono</th>
                         <th># Recomendados</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngIf="this.nw">
+                        <th><button (click)="add_nw()" type="button" class="btn btn-tabla-agregar btn- btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button></th>
                         <app-form-edit></app-form-edit>
                     </tr>
-                    <tr id='row_1'>
+                    <tr *ngFor='let user of users; let i = index;' id={{i}}>
                         <th scope="row">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" (click)='edit_selected("row_1")' class="btn btn-secondary btn-info" title="Editar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                <button type="button" (click)='edit_selected(i)' class="btn btn-secondary btn-info" title="Editar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                 <button type="button" class="btn btn-secondary btn-danger" title="Eliminar"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                             </div>
                         </th>
-                        <td class="text-right">1</td>
-                        <td>14111314</td>
-                        <td><input type="text" value='Emmanuel' [disabled]="edited"></td>
-                        <td><input type="text" value='2017/09/02' [disabled]="edited"></td>
-                        <td class="text-right"><input type="text" value='$14,000.00' [disabled]="edited"></td>
-                        <td><input type="text" value='tugfaen4' [disabled]="edited"></td>
-                        <td><input type="text" value='HSBC' [disabled]="edited"></td>
-                        <td><input type="text" value='6671777617' [disabled]="edited"></td>
-                        <td class="text-right"><input type="text" value='999' [disabled]="edited"></td>
+                        <td class="text-right">{{i}}</td>
+                        <td>{{user['ID']}}</td>
+                        <td>{{user['name']}}</td>
+                        <td>{{user['register_date']}}</td>
+                        <td *ngIf='!this.edited[i]' class="text-right">{{user['credit']}}</td>
+                        <td *ngIf='!this.edited[i]'>{{user['account_name']}}</td>
+                        <td *ngIf='!this.edited[i]'>{{user['banco']}}</td>
+                        <td *ngIf='!this.edited[i]'>{{user['tel']}}</td>
+                        <td *ngIf='!this.edited[i]' class="text-right">{{user['recomendeds']}}</td>
+                        <td *ngIf='this.edited[i]' class="text-right"><input type="text" value="{{user['credit']}}"></td>
+                        <td *ngIf='this.edited[i]'><input type="text" value="{{user['account_name']}}"></td>
+                        <td *ngIf='this.edited[i]'><input type="text" value="{{user['banco']}}"></td>
+                        <td *ngIf='this.edited[i]'><input type="text" value="{{user['tel']}}"></td>
+                        <td *ngIf='this.edited[i]' class="text-right"><input type="text" value="{{user['recomendeds']}}"></td>
+                        <div>
+                        </div>
                     </tr>
+
                 </tbody>
 
             </table>

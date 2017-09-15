@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-edit.component.css']
 })
 export class FormEditComponent implements OnInit {
-
-  constructor() { }
-
+  public show: string;
+  constructor() {
+   }
   ngOnInit() {
   }
 
