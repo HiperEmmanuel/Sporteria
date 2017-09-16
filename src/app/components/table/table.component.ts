@@ -27,6 +27,7 @@ export class TableComponent {
    }
 
    sendtosavetoo(event) {
+     this.nw = false;
     this.sv.emit(event);
    }
 }

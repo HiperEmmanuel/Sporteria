@@ -16,7 +16,6 @@ export class LoginComponent {
 
   loguear(event) {
     this.info = [this.user, this.password];
-    console.log(this.info);
     this.loginevent.emit(this.info);
   }
 }

@@ -30,6 +30,7 @@ export class AppComponent {
     this.afAuth.auth.signOut();
   }
   Send(event) {
-    this.items.push({ cliente: {[event.id]: event } });
+    const clientes = this.af.object('/cliente/' + event.id);
+    clientes.set(event);  //.push({[event.id]: event});
   }
 }
