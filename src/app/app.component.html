@@ -1,8 +1,8 @@
 <app-header></app-header>
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
-    <app-login></app-login>
-    {{this.user}}
+    <app-login (loginevent)=login($event)></app-login>
+    {{this.msgVal}}
     <div *ngIf='(user | async)?.uid'>
         <app-table></app-table>
     </div>

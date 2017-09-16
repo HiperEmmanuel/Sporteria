@@ -20,16 +20,16 @@
                         <form class="text-center">
                             <div class="form-group">
                                 <label for="login"><i class="fa fa-user" aria-hidden="true"></i></label>
-                                <input type="number" name="user" ng-model="id" placeholder="ID" required>
+                                <input type="email" name="user" ng-model="this.id" placeholder="ID" required>
                             </div>
                             <div class="form-group">
                                 <label for="login"><i class="fa fa-unlock-alt" aria-hidden="true"></i></label>
-                                <input type="password" ng-model="password" name="pass" placeholder="*****" required>
+                                <input type="password" ng-model="this.password" name="pass" placeholder="*****" required>
                             </div>
-                            <input type="submit" name="boton-login" class="btn btn-success login loginmodal-submit" value="Ingresar">
+                            <button type='button' name="boton-login" (click)="this.loguear($event);" class="btn btn-success login loginmodal-submit">Ingresar</button>
                         </form>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer" *ngIf=false>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Recuperar contraseña</button>
                         <button type="button" class="btn btn-primary">Registrar</button>
                     </div>
@@ -39,9 +39,3 @@
     </div>
 
 </section>
-<script>
-    firebase.auth().signInWithEmailAndPassword(this.id, this.password).catch(function(error) {
-        errorCode = error.code;
-        errorMessage = error.message;
-    });
-</script>

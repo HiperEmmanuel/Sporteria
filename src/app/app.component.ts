@@ -9,6 +9,7 @@ import * as firebase from 'firebase/app';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
+
   user: Observable<firebase.User>;
   items: FirebaseListObservable<any[]>;
   msgVal: string = '';
@@ -17,8 +18,10 @@ export class AppComponent {
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
     this.user = this.afAuth.authState;
   }
-  login() {
-    this.afAuth.auth.signInAnonymously();
+  login(event) {
+    this.msgVal = event['user'];
+    this.afAuth.auth.signInWithEmailAndPassword('softwarehiper@gmail.com', 'Admin12++').catch(function (error) {
+    });
   }
   logout() {
     this.afAuth.auth.signOut();
