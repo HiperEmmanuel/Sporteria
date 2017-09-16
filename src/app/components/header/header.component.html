@@ -1,17 +1,24 @@
-<header class="Banner" role="banner">
+<header class="Banner fixed-top" role="banner">
         <nav class="navbar navbar-toggleable-md navbar-inverse  bg-inverse">
             <div class="container">
-                <button id="boton-menu" class="navbar-toggler text-left py-4" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <div class="row">
+                <button id="boton-menu" class="navbar-toggler text-left py-4 col-2 order-1" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-                
-            
+
+
   </button>
-                <a href="http://www.sporteria.mx" class="logo text-sm-center">
+
+                <a href="http://www.sporteria.mx" class="logo text-center order-2 order-lg-1 col-8" >
                     <img src="http://www.sporteria.mx/skins/sporteria.mx/images/logo.png" alt="images/logo.png"> </a>
+
+                    <button type="button" id="boton-login" class="btn btn-outline-success order-3 col-sm-2 order-lg-3 float-lg-right" data-toggle="modal" data-target="#logueo">
+                  <i class="fa fa-key" aria-hidden="true"></i>
+                  </button>
             </div>
+          </div>
 
 
-            <div class="collapse navbar-collapse text-center" id="navbarTogglerDemo01">
+            <div class="collapse navbar-collapse text-center order-lg-2" id="navbarTogglerDemo01">
 
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
@@ -29,5 +36,7 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>-->
             </div>
+
+
         </nav>
     </header>

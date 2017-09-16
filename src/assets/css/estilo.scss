@@ -1,39 +1,48 @@
 ////// Banner
 
 .logo img{
-    width: 30%;
-    padding-left: auto;
+    width: 12rem;
     flex: 1 1 auto;
 }
 #boton-menu{
     float:left;
-    margin-right: 27%;
+}
+#boton-login{
+  float:right;
 }
 
 /////// Tabla Afiliados
 .btn-tabla-agregar{
-   
-    
+
+
 }
 .btn-tabla-eliminar{
- 
+
 }
 .btn-tabla-editar{
 
 }
 
 #agregar{
-    background-color: #4e321a;
+    background-color: rgba(#292b2c, 0);
+}
+.Login button{
+  align-items: flex-end;
+  justify-content: center;
+}
+#Tabla{
+
 }
 footer {
   background-color: black;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
-  height: 40px;
+  height: 4rem;
   color: white; }
 body{
-    background-color: rgb(41, 25, 16);
+    background-color: rgb(42, 44, 45);
+    color: white;
 }
 .Login {
   background: url("../images/fondo.jpg") no-repeat 40% 50%;
