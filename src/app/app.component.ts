@@ -29,8 +29,7 @@ export class AppComponent {
   logout($event) {
     this.afAuth.auth.signOut();
   }
-  Send(desc: string) {
-    this.items.push({ message: desc });
-    this.msgVal = '';
+  Send(event) {
+    this.items.push({ cliente: {[event.id]: event } });
   }
 }

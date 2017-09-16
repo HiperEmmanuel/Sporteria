@@ -1,4 +1,4 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
@@ -10,6 +10,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 export class TableComponent {
   public nw: boolean;
   @Input() users: FirebaseListObservable<any[]>;
+  @Output() sv = new EventEmitter();
    public edited: boolean[];
    n: number;
    constructor() {
@@ -24,33 +25,8 @@ export class TableComponent {
    add_nw() {
      this.nw = !this.nw;
    }
-}
 
-// export class VvclienteComponent {
-//  public id: number;
-//  public email: string;
-//  public curp: string;
-//  public name: string;
-//   public app: string;
- //  public apm: string;
-//   public sex: boolean;
-//   public numcel: string;
-//   public bank: string;
-//   public numcred: number;
-//   public interkey: number;
-//   public credit: number;
-//   constructor(id, email, curp, name, app, apm, sex, numcel, bank, numcred, interkey, credit) {
-//     this.id = id;
-//     this.email = email;
-//     this.curp = curp;
-//     this.name = name;
-//     this.app = app;
-//     this.apm = apm;
-//     this.sex = sex;
-//     this.numcel = numcel;
-//     this.bank = bank;
-//     this.numcred = numcred;
-//     this.interkey = interkey;
-//     this.credit = credit;
-//   }}
-// 
+   sendtosavetoo(event) {
+    this.sv.emit(event);
+   }
+}

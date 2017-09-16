@@ -21,7 +21,7 @@
                 <tbody>
                     <tr *ngIf="this.nw">
                         <th><button (click)="add_nw()" type="button" class="btn btn-tabla-agregar btn- btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button></th>
-                        <app-form-edit></app-form-edit>
+                        <app-form-edit (sendtosave)='sendtosavetoo($event);'></app-form-edit>
                     </tr>
                     <tr *ngFor='let user of users | async; let i = index;' id={{i}}>
                         <th scope="row">
@@ -40,9 +40,9 @@
                         <td *ngIf='!this.edited[i]'>{{user['numcel']}}</td>
                         <td *ngIf='!this.edited[i]' class="text-right">{{user['recomendeds']}}</td>
                         <td *ngIf='this.edited[i]' class="text-right"><input type="text" value="{{user['credit']}}"></td>
-                        <td *ngIf='this.edited[i]'><input type="text" value="{{user['account_name']}}"></td>
-                        <td *ngIf='this.edited[i]'><input type="text" value="{{user['banco']}}"></td>
-                        <td *ngIf='this.edited[i]'><input type="text" value="{{user['tel']}}"></td>
+                        <td *ngIf='this.edited[i]'><input type="text" value="{{user['numcred']}}"></td>
+                        <td *ngIf='this.edited[i]'><input type="text" value="{{user['bank']}}"></td>
+                        <td *ngIf='this.edited[i]'><input type="text" value="{{user['numcel']}}"></td>
                         <td *ngIf='this.edited[i]' class="text-right"><input type="text" value="{{user['recomendeds']}}"></td>
                         <div>
                         </div>
