@@ -20,11 +20,11 @@
                         <form class="text-center">
                             <div class="form-group">
                                 <label for="login"><i class="fa fa-user" aria-hidden="true"></i></label>
-                                <input type="email" name="user" ng-model="this.id" placeholder="ID" required>
+                                <input type="email" name="user" [(ngModel)]="this.user" placeholder="ID" required>
                             </div>
                             <div class="form-group">
                                 <label for="login"><i class="fa fa-unlock-alt" aria-hidden="true"></i></label>
-                                <input type="password" ng-model="this.password" name="pass" placeholder="*****" required>
+                                <input type="password" [(ngModel)]="this.password" name="pass" placeholder="*****" required>
                             </div>
                             <button type='button' name="boton-login" (click)="this.loguear($event);" class="btn btn-success login loginmodal-submit">Ingresar</button>
                         </form>

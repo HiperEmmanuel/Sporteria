@@ -23,7 +23,7 @@
                         <th><button (click)="add_nw()" type="button" class="btn btn-tabla-agregar btn- btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button></th>
                         <app-form-edit></app-form-edit>
                     </tr>
-                    <tr *ngFor='let user of users; let i = index;' id={{i}}>
+                    <tr *ngFor='let user of users | async; let i = index;' id={{i}}>
                         <th scope="row">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" (click)='edit_selected(i)' class="btn btn-secondary btn-info" title="Editar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
@@ -31,13 +31,13 @@
                             </div>
                         </th>
                         <td class="text-right">{{i}}</td>
-                        <td>{{user['ID']}}</td>
+                        <td>{{user.id}}</td>
                         <td>{{user['name']}}</td>
-                        <td>{{user['register_date']}}</td>
+                        <td>{{user['registerdate']}}</td>
                         <td *ngIf='!this.edited[i]' class="text-right">{{user['credit']}}</td>
-                        <td *ngIf='!this.edited[i]'>{{user['account_name']}}</td>
-                        <td *ngIf='!this.edited[i]'>{{user['banco']}}</td>
-                        <td *ngIf='!this.edited[i]'>{{user['tel']}}</td>
+                        <td *ngIf='!this.edited[i]'>{{user['numcred']}}</td>
+                        <td *ngIf='!this.edited[i]'>{{user['bank']}}</td>
+                        <td *ngIf='!this.edited[i]'>{{user['numcel']}}</td>
                         <td *ngIf='!this.edited[i]' class="text-right">{{user['recomendeds']}}</td>
                         <td *ngIf='this.edited[i]' class="text-right"><input type="text" value="{{user['credit']}}"></td>
                         <td *ngIf='this.edited[i]'><input type="text" value="{{user['account_name']}}"></td>

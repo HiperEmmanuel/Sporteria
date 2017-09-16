@@ -3,11 +3,13 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
+
 export class AppComponent {
 
   user: Observable<firebase.User>;
@@ -17,13 +19,14 @@ export class AppComponent {
 
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
     this.user = this.afAuth.authState;
+  this.items = af.list('/cliente');
   }
   login(event) {
     this.msgVal = event['user'];
     this.afAuth.auth.signInWithEmailAndPassword('softwarehiper@gmail.com', 'Admin12++').catch(function (error) {
     });
   }
-  logout() {
+  logout($event) {
     this.afAuth.auth.signOut();
   }
   Send(desc: string) {
