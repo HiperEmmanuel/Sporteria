@@ -1,191 +1,207 @@
-    <section class="admin animated fadeIn">
-        <div class="container">
-            <div class="row">
+<section class="admin animated fadeIn">
+    <div class="container">
+        <div class="row">
 
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Panel administrativo</h5>
+            <div class="list-group col-12 col-md-8 offset-md-2">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Panel administrativo</h5>
 
-                        </div>
-                        <p class="mb-1">En este menú puede hacer edicion de los datos del afiliado, asi como editar otras cosas.</p>
-
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="collapse" data-parent="#accordion" href="#agregarAfiliado" aria-expanded="true" aria-controls="aAfiliado">
-                        <div class="d-flex w-100 justify-content-between" id="aAfiliado">
-                            <h5 class="mb-1"><span class="badge badge-success">Agregar</span> Afiliado</h5>
-
-                        </div>
-                        <p class="mb-2">En este formulario puede agregar a los afiliados nuevos.</p>
-
-                    </a>
-                    <div class="collapse show" role="tabpanel" aria-labelledby="aAfiliado" id="agregarAfiliado">
-                        <h5 class="text-center alert alert-info my-1">Proporcione la siguiente información.</h5>
-                        <div class="row">
-
-                            <form>
-                                <div class="form-group">
-                                    <label for="agregarForm">ID</label>
-                                    <input type="number" class="form-control" placeholder="" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Correo electrónico</label>
-                                    <input type="email" class="form-control" placeholder="emmanuel@sporteria.mx" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Tag</label>
-                                    <input type="number" class="form-control" placeholder="" size="8">
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Contraseña</label>
-                                    <input type="password" class="form-control" placeholder="******" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Repetir contraseña</label>
-                                    <input type="password" class="form-control" placeholder="******" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">CURP</label>
-                                    <input type="text" class="form-control" placeholder="" size="18" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Nombre</label>
-                                    <input type="text" class="form-control" placeholder="Emmanuel" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Apellido Paterno</label>
-                                    <input type="text" class="form-control" placeholder="" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Apellido Materno</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Domicilio</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Codigo Postal</label>
-                                    <input type="number" class="form-control" placeholder="" required size="5">
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Ciudad</label>
-                                    <select name="ciudad" class="form-control">
-                                    <option value="1">Aguascalientes</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Estado</label>
-                                    <select name="estado" class="form-control">
-                                    <option value="1">Aguascalientes</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Pais</label>
-                                    <select name="pais" class="form-control" disabled>
-                                    <option value="1">México</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Sexo</label>
-                                    <div class="form-check">
-
-                                        <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="" id="" value="M" checked>
-                                            Masculino
-                                    </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="" id="" value="F">
-                                            Femenino
-                                    </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="" id="" value="O">
-                                            Otro
-                                    </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Numero celular</label>
-                                    <input type="tel" class="form-control" placeholder="" size="10" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Banco</label>
-                                    <select name="Banco" class="form-control">
-                                    <option value="1">Banamex</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Numero de tarjeta</label>
-                                    <input type="number" class="form-control" placeholder="" size="16">
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Clabe Interbancaria</label>
-                                    <input type="number" class="form-control" placeholder="" size="18">
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Credito</label>
-                                    <input type="number" step="any" min="0" class="form-control" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Permisos</label>
-                                    <select name="Permisos" class="form-control">
-                                    <option value="1">Usuario</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" class="form-control btn-success">
-                                </div>
-                            </form>
-
-
-
-                        </div>
                     </div>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="collapse" data-parent="#accordion" href="#agregarBanco" aria-expanded="false" aria-controls="aBanco" id="aBanco">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><span class="badge badge-success">Agregar</span> Banco</h5>
-                        </div>
-                        <p class="mb-1"> Añada el banco que no se encuentre actualmente.</p>
+                    <p class="mb-1">En este menú puede hacer edicion de los datos del afiliado, asi como editar otras cosas.</p>
 
-                    </a>
-                    <div class="collapse show" role="tabpanel" aria-labelledby="aBanco" id="agregarBanco">
-                        <h5 class="text-center alert alert-info my-1">Proporcione la siguiente información.</h5>
-                        <div class="row">
+                </a>
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="collapse" data-parent="#accordion" href="#agregarAfiliado" aria-expanded="true" aria-controls="aAfiliado">
+                    <div class="d-flex w-100 justify-content-between" id="aAfiliado">
+                        <h5 class="mb-1"><span class="badge badge-success">Agregar</span> Afiliado</h5>
 
-                            <form>
-                                <div class="form-group">
-                                    <label for="agregarForm">Nombre del banco</label>
-                                    <input type="number" class="form-control" placeholder="" required>
+                    </div>
+                    <p class="mb-2">En este formulario puede agregar a los afiliados nuevos.</p>
+
+                </a>
+                <div class="collapse show" role="tabpanel" aria-labelledby="aAfiliado" id="agregarAfiliado">
+                    <h5 class="text-center alert alert-info my-1">Proporcione la siguiente información.</h5>
+                    <div class="row">
+
+                        <form class="col-12 col-md-6 justify-content-center">
+                            <div class="form-group">
+                                <label for="agregarForm">ID</label>
+                                <input type="number" class="form-control" placeholder="Numero de Usuario" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Correo electrónico</label>
+                                <input type="email" class="form-control" placeholder="correo@sporteria.mx" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Tag</label>
+                                <input type="number" class="form-control" placeholder="" size="8">
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Contraseña</label>
+                                <input type="password" class="form-control" placeholder="******" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Repetir contraseña</label>
+                                <input type="password" class="form-control" placeholder="******" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">CURP</label>
+                                <input type="text" class="form-control" placeholder="" size="18" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Nombre</label>
+                                <input type="text" class="form-control" placeholder="Nombre(s)" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Apellido Paterno</label>
+                                <input type="text" class="form-control" placeholder="Apellido Paterno" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Apellido Materno</label>
+                                <input type="text" class="form-control" placeholder="Apellido Materno">
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Domicilio</label>
+                                <input type="text" class="form-control" placeholder="Calle y numero">
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">CP</label>
+                                <input type="number" class="form-control" placeholder="Codigo Postal" minlength="5" required size="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Colonia/Fraccionamiento</label>
+                                <select name="ciudad" class="form-control">
+                                <option value="1">JSON</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Ciudad</label>
+                                <select name="ciudad" class="form-control" disabled>
+                                <option value="1">Aguascalientes</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Estado</label>
+                                <select name="estado" class="form-control" disabled>
+                                <option value="1">Aguascalientes</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Pais</label>
+                                <select name="pais" class="form-control" disabled>
+                                <option value="1">México</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Sexo</label>
+                                <div class="form-check">
+
+                                    <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="" id="" value="M" checked>
+                                        Masculino
+                                </label>
                                 </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Pais</label>
-                                    <input type="number" class="form-control" placeholder="" required>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="" id="" value="F">
+                                        Femenino
+                                </label>
                                 </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Status</label>
-                                    <input type="number" class="form-control" placeholder="" required>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="" id="" value="O">
+                                        Otro
+                                </label>
                                 </div>
-                                <div class="form-group">
-                                    <label for="agregarForm">Moneda</label>
-                                    <input type="number" class="form-control" placeholder="" required>
-                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Numero celular</label>
+                                <input type="tel" class="form-control" placeholder="" size="10" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Banco</label>
+                                <select name="Banco" class="form-control">
+                                <option value="1">Banamex</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Numero de tarjeta</label>
+                                <input type="number" class="form-control" placeholder="" size="16">
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Clabe Interbancaria</label>
+                                <input type="number" class="form-control" placeholder="" size="18">
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Credito</label>
+                                <input type="number" step="any" min="0" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Permisos</label>
+                                <select name="Permisos" class="form-control">
+                                <option value="1">Usuario</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="form-control btn-success glyphicon glyphicon-floppy-disk">
+                            </div>
+                        </form>
 
-                                <div class="form-group">
-                                    <input type="submit" class="form-control btn-success">
-                                </div>
-                            </form>
 
 
-
-                        </div>
                     </div>
                 </div>
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="collapse" data-parent="#accordion" href="#agregarBanco" aria-expanded="false" aria-controls="aBanco" id="aBanco">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1"><span class="badge badge-success">Agregar</span> Banco</h5>
+                    </div>
+                    <p class="mb-1"> Añada el banco que no se encuentre actualmente.</p>
+
+                </a>
+                <div class="collapse show" role="tabpanel" aria-labelledby="aBanco" id="agregarBanco">
+                    <h5 class="text-center alert alert-info my-1">Proporcione la siguiente información.</h5>
+                    <div class="row">
+
+                        <form class="col-12 col-md-6 justify-content-center">
+                            <div class="form-group">
+                                <label for="agregarForm">Nombre del banco</label>
+                                <input type="number" class="form-control" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Pais</label>
+                                <select name="pais" class="form-control">
+                                <option value="1" selected>México</option>
+                                <option value="2">Estados Unidos</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Status</label>
+                                <select name="status" class="form-control">
+                                <option value="1" selected>Desactivado</option>
+                                <option value="2">Activo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="agregarForm">Moneda</label>
+                                 <select name="pais" class="form-control" disabled>
+                                     <!-- Esto depende del pais que se coloque arriba -->
+                                <option value="1" selected>MXN</option>
+                                <option value="2">USD</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="form-control btn-success">
+                            </div>
+                        </form>
 
 
+
+                    </div>
+                </div>
             </div>
+
+
         </div>
-    </section>
+    </div>
+</section>

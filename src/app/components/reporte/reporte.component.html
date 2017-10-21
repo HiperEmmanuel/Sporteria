@@ -1,0 +1,46 @@
+<section class="Reportes animated fadeIn" role="gridcell">
+  <div class="container-fluid">
+      
+      <div class="row justify-content-center">
+          <!--La fecha se incluira arriba de la tabla en cada tabla-->
+          <div class="col-12 bg-warning text-center">
+              <label>Fecha: <span class="h5">15 de nov de 2017 al 22 de nov de 2017</span></label>
+          </div>
+          <table id="Tabla" class="table table-responsive table-inverse col-12 col-md-10">
+              <thead>
+                  
+                  <tr>
+                      <th>ID</th>
+                      <th>Nombre</th>
+                      <th>Credito</th>
+                      <th>Saldo</th>
+                      <th>Neto</th>
+                      <!-- Al CREDITO se le resta el SALDO y el resultado lo da en NETO (cuando es 0 o negativo debe de cambiar el fondo del recuadro y si es mayor a cero debe de estar en verde), en 15% se hace una multiplicacion por .85-->
+                      <th>15%</th>
+                      <th>Pago</th>
+                      <th>Fecha de pago/cobro</th>
+                      <th>Comentarios/Notas</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Numero ID</td>
+                      <td>Nombre de apostador</td>
+                      <!-- El credito solo lo puede editar un ADMIN un AFILIADO NO (este dato se obtiene del corte semanal-->
+                      <td>2500</td>
+                      <!--El saldo si se puede editar-->
+                      <td>2000</td>
+                      <!-- Formula -->
+                      <td>500</td>
+                      <!-- Se pone NA cuando no aplica a descuento-->
+                      <td>NA</td>
+                      <td>100$</td>
+                      <td>21-nov-17</td>
+                      <!-- Los comentarios son opcionales, y son editables (y lo pueden ver los Admin)-->
+                      <td>___________________</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</section>

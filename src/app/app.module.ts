@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormEditComponent } from './components/form-edit/form-edit.component';
 import { PanelAdminComponent } from './components/panel-admin/panel-admin.component';
 import { VclienteComponent } from './components/vcliente/vcliente.component';
+import { ReporteComponent } from './reporte/reporte.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCfe_GUU9RIAL_rLZdWfw8clTbGku8Uyvc',
@@ -31,6 +32,7 @@ export const firebaseConfig = {
     FormEditComponent,
     PanelAdminComponent,
     VclienteComponent,
+    ReporteComponent,
   ],
   imports: [
     BrowserModule,

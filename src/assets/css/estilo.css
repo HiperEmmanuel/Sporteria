@@ -1,3 +1,6 @@
+.navbar > .container {
+  display: block; }
+
 .logo img {
   width: 12rem;
   -webkit-box-flex: 1;

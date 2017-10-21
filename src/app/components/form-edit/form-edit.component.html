@@ -1,31 +1,31 @@
 <div class="container collapse show" id="agregar">
-    <h5 class="text-center alert alert-info my-1 col-5">Proporcione la siguiente información.</h5>
+    <h5 class="text-center alert alert-info my-1 col-12 col-md-6 offset-md-3">Proporcione la siguiente información.</h5>
     <div class="row">
 
-        <form>
+        <form class="col-12 col-md-6 justify-content-center">
             <div class="form-group">
                 <label for="agregarForm">ID</label>
-                <input type="number" [(ngModel)]="obj.id" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="14111314" required>
+                <input type="number" [(ngModel)]="obj.id" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Numero ID" required>
             </div>
             <div class="form-group">
                 <label for="agregarForm">Correo electrónico</label>
-                <input type="email" [(ngModel)]="obj.email" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="emmanuel@sporteria.mx" required>
+                <input type="email" [(ngModel)]="obj.email" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="correo@sporteria.mx" required>
             </div>
             <div class="form-group">
                 <label for="agregarForm">CURP</label>
-                <input type="text" [(ngModel)]="obj.curp" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="LOLE960214HSLPRM06" size="18" required>
+                <input type="text" [(ngModel)]="obj.curp" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="CURP" size="18" minlength="18" required>
             </div>
             <div class="form-group">
                 <label for="agregarForm">Nombre</label>
-                <input type="text" [(ngModel)]="obj.name" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Emmanuel" required>
+                <input type="text" [(ngModel)]="obj.name" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Nombre(s)" required>
             </div>
             <div class="form-group">
                 <label for="agregarForm">Apellido Paterno</label>
-                <input type="email" [(ngModel)]="obj.app" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Lopez" required>
+                <input type="email" [(ngModel)]="obj.app" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Apellido Paterno" required>
             </div>
             <div class="form-group">
                 <label for="agregarForm">Apellido Materno</label>
-                <input type="email" [(ngModel)]="obj.apm" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Loera">
+                <input type="email" [(ngModel)]="obj.apm" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Apellido Materno">
             </div>
             <div class="form-group">
                 <label for="agregarForm">Sexo</label>
@@ -61,15 +61,15 @@
             </div>
             <div class="form-group">
                 <label for="agregarForm">Numero de tarjeta</label>
-                <input type="number" [(ngModel)]="obj.numcred" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="5200000000000000" size="16">
+                <input type="number" [(ngModel)]="obj.numcred" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="16 digitos" size="16">
             </div>
             <div class="form-group">
                 <label for="agregarForm">Clabe Interbancaria</label>
-                <input type="number" [(ngModel)]="obj.interkey" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="019283746583921029" size="18">
+                <input type="number" [(ngModel)]="obj.interkey" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="18 digitos" size="18">
             </div>
             <div class="form-group">
                 <label for="agregarForm">Credito</label>
-                <input type="number" [(ngModel)]="obj.credit" [ngModelOptions]="{standalone: true}" step="any" min="0" class="form-control" placeholder="2000.00">
+                <input type="number" [(ngModel)]="obj.credit" [ngModelOptions]="{standalone: true}" step="any" min="0" class="form-control" placeholder="Credito inicial">
             </div>
             <div class="form-group">
                 <label for="agregarForm">Foto de identificación oficial</label>
@@ -80,7 +80,7 @@
                 <input type="file" class="form-control-file" id="confirmacion">
             </div>
             <div class="form-group">
-                <input type="button" (click)='save_client()' class="form-control btn-success">
+                <input type="button" (click)='save_client()' class="form-control btn-success" value="Guardar">
             </div>
         </form>
     </div>
