@@ -8,14 +8,11 @@ import { ConexionService } from '../../conexion.service';
 export class LoginComponent {
   public user: string;
   public password: string;
-  private info: string[];
+  private info;
   constructor(private conexion: ConexionService) { }
 
-  ngOnInit() {
-  }
-
   loguear(event) {
-    this.info = [this.user, this.password];
+    this.info = {id: this.user, password: this.password};
     this.conexion.login(this.info);
   }
 }

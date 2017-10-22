@@ -18,6 +18,5 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    console.log(this.conexion.login({ id: 100000, password: 'Admin12++' }));
   }
 }
