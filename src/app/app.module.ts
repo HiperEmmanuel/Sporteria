@@ -4,6 +4,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -13,7 +14,17 @@ import { LoginComponent } from './components/login/login.component';
 import { FormEditComponent } from './components/form-edit/form-edit.component';
 import { PanelAdminComponent } from './components/panel-admin/panel-admin.component';
 import { VclienteComponent } from './components/vcliente/vcliente.component';
-import { ReporteComponent } from './reporte/reporte.component';
+//import { ReporteComponent } from './reporte/reporte.component';
+//import { ReportesComponent } from './reportes/reportes.component';
+import { ReporteComponent } from './components/reporte/reporte.component';
+import { AdminComponent } from './admin/admin.component';
+import { ConexionService } from './conexion.service';
+
+const routes: Routes = [
+  { path: '', component: TableComponent },
+  { path: 'reportes', component: ReporteComponent },
+  { path: 'admin-panel', component: AdminComponent }
+];
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCfe_GUU9RIAL_rLZdWfw8clTbGku8Uyvc',
@@ -33,15 +44,17 @@ export const firebaseConfig = {
     PanelAdminComponent,
     VclienteComponent,
     ReporteComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ConexionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

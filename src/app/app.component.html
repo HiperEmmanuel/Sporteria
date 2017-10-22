@@ -5,7 +5,7 @@
         <app-login (loginevent)=login($event)></app-login>
     </div>
     <div *ngIf='(user | async)?.uid'>
-        <app-table [users]='items' (sv)='Send($event);'></app-table>
+        <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>
 </div>
