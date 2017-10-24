@@ -14,8 +14,6 @@ import { LoginComponent } from './components/login/login.component';
 import { FormEditComponent } from './components/form-edit/form-edit.component';
 import { PanelAdminComponent } from './components/panel-admin/panel-admin.component';
 import { VclienteComponent } from './components/vcliente/vcliente.component';
-//import { ReporteComponent } from './reporte/reporte.component';
-//import { ReportesComponent } from './reportes/reportes.component';
 import { ReporteComponent } from './components/reporte/reporte.component';
 import { AdminComponent } from './admin/admin.component';
 import { ConexionService } from './conexion.service';
