@@ -16,34 +16,16 @@ export class ConexionService {
    get_clientes() {
      return this.af.list('/cliente');
    }
-   get_users() {
-     return this.af.list('/ids');
-   }
-
-   create_user(user, password) {
-     return this.afAuth.auth.createUserWithEmailAndPassword(user.email, password).then(obj => {
-      let ids = this.af.object('/ids/');
-      let i = 100000;
-      this.af.list('/ids').subscribe(d => i = i + d.length);
-      ids = this.af.object('/ids/' + i);
-      user.id = i;
-      ids.set(user);
-      console.log('Success', obj);
-      })
-     .catch(obj => console.log('Failed: ', obj.message));
-   }
   login(event) {
-    this.afAuth.auth.signInWithEmailAndPassword('dumy@dumy.dumy', 'default');
-    this.af.list('/ids', { query: { email: event['id'] } }).subscribe(obj => {
-      this.afAuth.auth.signInWithEmailAndPassword(obj[0].$value, event['password']).catch(function (error) {
-        this.logout();
-      });
-    });
+    let email = this.af.list('/ids', { query: {equalTo: event['id']} })[0];
+    return this.af.list('/ids', { query: { equalTo: event['id'] } }).subscribe();
+    // this.afAuth.auth.signInWithEmailAndPassword(email['email'], 'Admin12++').catch(function (error) {
+    // });
   }
   logout() {
     this.afAuth.auth.signOut();
   }
-  addclient(event) {
+  Send(event) {
     const clientes = this.af.object('/cliente/' + event.id);
     clientes.set(event);  // .push({[event.id]: event});
   }

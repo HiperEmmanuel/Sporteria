@@ -19,8 +19,6 @@ import { VclienteComponent } from './components/vcliente/vcliente.component';
 import { ReporteComponent } from './components/reporte/reporte.component';
 import { AdminComponent } from './admin/admin.component';
 import { ConexionService } from './conexion.service';
-import { CreateUserComponent } from './create-user/create-user.component';
-import { UsersTableComponent } from './users-table/users-table.component';
 
 const routes: Routes = [
   { path: '', component: TableComponent },
@@ -47,8 +45,6 @@ export const firebaseConfig = {
     VclienteComponent,
     ReporteComponent,
     AdminComponent,
-    CreateUserComponent,
-    UsersTableComponent,
   ],
   imports: [
     BrowserModule,
