@@ -1,58 +1,114 @@
 <section class="Tabla animated fadeIn" role="grid">
+    <div *ngIf="this.nw">
+        <th><button (click)="add_nw()" type="button" class="btn btn-tabla-agregar btn- btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button></th>
+        <app-form-edit (sendtosave)='sendtosavetoo($event);'></app-form-edit>
+    </div>
+    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+        <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+        <button (click)="add_nw()" type="button" class="btn btn-tabla-agregar btn- btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+    </div>
     <div class="container-fluid">
         <div class="row justify-content-center">
-
-            <table id="Tabla" class="table table-responsive table-inverse col-12 col-md-10">
-                <!-- table content here -->
-                <thead>
-                    <tr *ngIf="!this.nw">
-                        <th><button (click)="add_nw()" type="button" class="btn btn-tabla-agregar btn- btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button></th>
-                        <th>#</th>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Fecha de registro</th>
-                        <th>Credito</th>
-                        <th>Numero de Cuenta</th>
-                        <th>Banco</th>
-                        <th>Telefono</th>
-                        <th># Recomendados</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngIf="this.nw">
-                        <th><button (click)="add_nw()" type="button" class="btn btn-tabla-agregar btn- btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button></th>
-                        <app-form-edit (sendtosave)='sendtosavetoo($event);'></app-form-edit>
-                    </tr>
-                    <tr *ngFor='let user of users | async; let i = index;' id={{i}}>
-                        <th scope="row">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" (click)='edit_selected(i)' class="btn btn-secondary btn-info" title="Editar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-secondary btn-danger" title="Eliminar"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                            </div>
-                        </th>
-                        <td class="text-right">{{i}}</td>
-                        <td>{{user.id}}</td>
-                        <td>{{user['name']}}</td>
-                        <td>{{user['registerdate']}}</td>
-                        <td *ngIf='!this.edited[i]' class="text-right">{{user['credit']}}</td>
-                        <td *ngIf='!this.edited[i]'>{{user['numcred']}}</td>
-                        <td *ngIf='!this.edited[i]'>{{user['bank']}}</td>
-                        <td *ngIf='!this.edited[i]'>{{user['numcel']}}</td>
-                        <td *ngIf='!this.edited[i]' class="text-right">{{user['recomendeds']}}</td>
-                        <td *ngIf='this.edited[i]' class="text-right"><input type="text" value="{{user['credit']}}"></td>
-                        <td *ngIf='this.edited[i]'><input type="text" value="{{user['numcred']}}"></td>
-                        <td *ngIf='this.edited[i]'><input type="text" value="{{user['bank']}}"></td>
-                        <td *ngIf='this.edited[i]'><input type="text" value="{{user['numcel']}}"></td>
-                        <td *ngIf='this.edited[i]' class="text-right"><input type="text" value="{{user['recomendeds']}}"></td>
-                        <div>
-                        </div>
-                    </tr>
-
-                </tbody>
-
-            </table>
+            <!-- assaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
 
         </div>
+        <p-dataTable [value]="users|async" [rows]="10" expandableRows="true" [editable]="true" [paginator]="true" [globalFilter]="gb" #dt>
+            <p-header>Clientes</p-header>
+            <p-column expander="true" styleClass="col-icon"></p-column>
+            <p-column field="id" header="ID" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="name" header="Nombre" [filter]="true" filterPlaceholder="Search">
+            </p-column>
+            <p-column field="credit" header="Credito" [filter]="true" [editable]="true" filterPlaceholder="Search">
+            </p-column>
+            <p-column field="saldo" header="Saldo" [filter]="true" [editable]="true" filterPlaceholder="Search">
+            </p-column>
+            <p-column field="neto" header="Neto" [filter]="true" filterPlaceholder="Search">
+            </p-column>
+            <p-column field="descuento" header="Descuento" [filter]="true" [editable]="true" filterMatchMode="equals">
+                <ng-template pTemplate="filter" let-col>
+                    <p-dropdown [options]="desc" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-dropdown>
+                </ng-template>
+            </p-column>
+            <p-column field="pago" header="Pago" [filter]="true" [editable]="true" filterMatchMode="in">
+            </p-column>
+            <p-column field="fecha" header="Fecha/pago" [filter]="true" [editable]="true" filterMatchMode="in">
+                <ng-template pTemplate="filter" let-col>
+                    <p-calendar [(ngModel)]="rangeDates" selectionMode="range" readonlyInput="true"></p-calendar>
+                </ng-template>
+            </p-column>
+            <p-column field="nota" header="Nota">
+            </p-column>
+            <ng-template let-car pTemplate="rowexpansion">
+                <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-9">
+                            <div class="ui-grid ui-grid-responsive ui-grid-pad">
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-2 label">Numero de cuenta: </div>
+                                    <div class="ui-grid-col-1">
+                                        <p-inplace closable="closable">
+                                            <span pInplaceDisplay>
+                                 {{car.numcred}}
+                                </span>
+                                            <span pInplaceContent>
+                                     <input type="text" value={{car.vin}} pInputText>
+                                </span>
+                                        </p-inplace>
+                                    </div>
+                                </div>
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-2 label">Banco: </div>
+                                    <div class="ui-grid-col-1">
+                                        <p-inplace closable="closable">
+                                            <span pInplaceDisplay>
+                                 {{car.bank}}
+                                </span>
+                                            <span pInplaceContent>
+                                     <input type="text" value={{car.vin}} pInputText>
+                                </span>
+                                        </p-inplace>
+                                    </div>
+                                </div>
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-2 label">Telefono: </div>
+                                    <div class="ui-grid-col-1">
+                                        <p-inplace closable="closable">
+                                            <span pInplaceDisplay>
+                                                    {{car.numcel}}
+                                                </span>
+                                            <span pInplaceContent>
+                                                    <p-inputMask mask="(999)999-9999" placeholder="99-999999"></p-inputMask>
+                                                </span>
+                                        </p-inplace>
+                                    </div>
+                                </div>
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-2 label">Fecha de registro: </div>
+                                    <div class="ui-grid-col-1">
+                                        {{car.registerdate}}
+                                    </div>
+                                </div>
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-2 label">Recomendados: </div>
+                                    <div class="ui-grid-col-1">
+                                        <p-inplace closable="closable">
+                                            <span pInplaceDisplay>
+                                 {{car.recomendeds}}
+                                </span>
+                                            <span pInplaceContent>
+                                     <input type="text" value={{car.vin}} pInputText>
+                                </span>
+                                        </p-inplace>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-dataTable>
+        <!-- <<<<<<<<<<<<<<<<<<<<<<<<<< -->
     </div>
 
 </section>

@@ -5,7 +5,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { DataTableModule, SharedModule, CalendarModule, DropdownModule } from 'primeng/primeng';
+import { InplaceModule, InputMaskModule, DataTableModule, SharedModule, CalendarModule, DropdownModule } from 'primeng/primeng';
 
 
 import { AppComponent } from './app.component';
@@ -58,6 +58,8 @@ export const firebaseConfig = {
     DataTableModule,
     CalendarModule,
     DropdownModule,
+    InplaceModule,
+    InputMaskModule,
     SharedModule
   ],
   providers: [ConexionService],

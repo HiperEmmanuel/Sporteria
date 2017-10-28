@@ -23,7 +23,8 @@ export class ReporteComponent implements OnInit {
         neto: 49900,
         descuento: '15%',
         pago: 0,
-        semana: ['23/10/2017', '30/10/2017']
+        semana: ['23/10/2017', '30/10/2017'],
+        Nota: 'pago al contado'
       }
     );
    }

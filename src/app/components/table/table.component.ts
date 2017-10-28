@@ -14,6 +14,12 @@ export class TableComponent {
   @Output() sv = new EventEmitter();
    public edited: boolean[];
    n: number;
+
+   cars: any[];
+   desc: any[];
+   batos: any[];
+   rangeDates: Date[];
+   yearFilter: number;
    constructor(private conexion: ConexionService) {
   this.n = 2;
   // this.users.forEach(function(g){this.n++; });
