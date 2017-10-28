@@ -5,6 +5,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { DataTableModule, SharedModule, CalendarModule, DropdownModule } from 'primeng/primeng';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -52,7 +54,11 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    DataTableModule,
+    CalendarModule,
+    DropdownModule,
+    SharedModule
   ],
   providers: [ConexionService],
   bootstrap: [AppComponent]

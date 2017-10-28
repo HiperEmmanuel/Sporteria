@@ -68,4 +68,5 @@ export class Item {
   public credit: number;
   public registerdate: string;
   public recomendeds: Number = 0;
+  public descuento: boolean = false;
 }
