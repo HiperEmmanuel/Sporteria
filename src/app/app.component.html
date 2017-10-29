@@ -1,10 +1,50 @@
-<app-header></app-header>
+<app-header [user2]='user2'></app-header>
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
-    <div *ngIf='!(user | async)?.uid'>
-        <app-login (loginevent)=login($event)></app-login>
+    <div *ngIf='!user2|async'>
+        <section class="Login">
+            <div class="container-fluid">
+                <!-- Button trigger modal
+        <button type="button" class="btn btn-primary my-5" data-toggle="modal" data-target="#logueo">
+  Entrar
+</button>  -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="logueo" tabindex="-1" role="dialog" aria-labelledby="logueo" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModal3Label">Afiliados de Sporteria</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                            </div>
+                            <div class="modal-body">
+                                <h1>Acceder al sistema</h1><br>
+                                <form class="text-center">
+                                    <div class="form-group">
+                                        <label for="login"><i class="fa fa-user" aria-hidden="true"></i></label>
+                                        <input (click)="test()" type="email" name="user" [(ngModel)]="this.user" placeholder="ID" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="login"><i class="fa fa-unlock-alt" aria-hidden="true"></i></label>
+                                        <input type="password" [(ngModel)]="this.password" name="pass" placeholder="*****" required>
+                                    </div>
+                                    <button type='button' name="boton-login" (click)="this.loguear($event);" class="btn btn-success login loginmodal-submit">Ingresar</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer" *ngIf=false>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Recuperar contraseña</button>
+                                <button type="button" class="btn btn-primary">Registrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
     </div>
-    <div *ngIf='(user | async)?.uid'>
+    <div *ngIf='user2|async'>
         <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>

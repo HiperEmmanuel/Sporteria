@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ConexionService } from '../../conexion.service';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-reporte',
@@ -8,25 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class ReporteComponent implements OnInit {
   cars: any[];
   desc: any[];
-  batos: any[];
+  batos: FirebaseListObservable<any[]>;
   rangeDates: Date[];
   yearFilter: number;
 
-  constructor() {
-    this.batos = [];
-    this.batos.push(
-      {
-        id: 100,
-        nombre: 'fernando',
-        credito: 50000,
-        saldo: 100,
-        neto: 49900,
-        descuento: '15%',
-        pago: 0,
-        semana: ['23/10/2017', '30/10/2017'],
-        Nota: 'pago al contado'
-      }
-    );
+  constructor(public conexion: ConexionService) {
+    this.batos = this.conexion.get_clientes();
    }
 
   ngOnInit() {

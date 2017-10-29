@@ -10,14 +10,24 @@ import * as firebase from 'firebase/app';
 })
 
 export class AppComponent {
-  user: Observable<firebase.User>;
+  user2: Observable<firebase.User>;
   title = 'Sporteria';
-
-  constructor(private conexion: ConexionService) {
-    this.user = this.conexion.get_auth();
+  public user: string;
+  public password: string;
+  private info: string[];
+  constructor(public conexion: ConexionService) {
+    this.user2 = this.conexion.get_auth();
   }
 
   ngOnInit() {
-    console.log(this.conexion.login({ id: 100000, password: 'Admin12++' }));
+  }
+
+  loguear(event) {
+    this.info = [this.user, this.password];
+    this.conexion.login(this.info);
+    // this.loge.emit(this.conexion.user);
+  }
+  test() {
+   // this.conexion.get_auth().subscribe(val => this.user2 = val.uid);
   }
 }

@@ -29,9 +29,9 @@ export class FormEditComponent implements OnInit {
 @Output() sendtosave = new EventEmitter();
 
    save_client() {
-       this.new_obj = {
-        'id': this.obj.id,
-        'email': this.obj.email,
+this.new_obj = {
+'id': this.obj.id,
+'email': this.obj.email,
 'curp': this.obj.curp,
 'name': this.obj.name,
 'app': this.obj.app,
@@ -42,6 +42,11 @@ export class FormEditComponent implements OnInit {
 'numcred': this.obj.numcred,
 'interkey': this.obj.interkey,
 'credit': this.obj.credit,
+'descuento': this.obj.descuento,
+'saldo': this.obj.saldo,
+'pago': this.obj.pago,
+'fecha': this.obj.fecha,
+'nota': this.obj.nota,
 'registerdate': this.obj.registerdate,
         'recomendeds': this.obj.recomendeds,
        };
@@ -69,4 +74,8 @@ export class Item {
   public registerdate: string;
   public recomendeds: Number = 0;
   public descuento: boolean = false;
+  public saldo: Number = 0;
+  public pago: Number = 0;
+  public fecha: string = 'N/A';
+  public nota: string = 'N/A';
 }

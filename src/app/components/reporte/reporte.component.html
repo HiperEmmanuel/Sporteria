@@ -1,13 +1,13 @@
 <!-- por cada aca reporte -->
 
-<p-dataTable [value]="batos" sortField="semana" rowGroupMode="subheader" groupField="semana" expandableRowGroups="true" [sortableRowGroup]="false">
+<p-dataTable [value]="batos|async" sortField="semana" rowGroupMode="subheader" groupField="semana" expandableRowGroups="true" [sortableRowGroup]="false" #dt>
     <p-header>Reporte Semanal</p-header>
-    <ng-template pTemplate="rowgroupheader" let-rowData>Semana: {{rowData['semana'][0]}} - {{rowData['semana'][1]}}</ng-template>
+    <ng-template pTemplate="rowgroupheader" let-rowData>Semana: nothing</ng-template>
     <p-column expander="true" styleClass="col-icon"></p-column>
     <p-column field="id" header="ID" [filter]="true" filterPlaceholder="Search"></p-column>
     <p-column field="nombre" header="Nombre" [filter]="true" filterPlaceholder="Search">
     </p-column>
-    <p-column field="credito" header="Credito" [filter]="true" [editable]="true" filterPlaceholder="Search">
+    <p-column field="credit" header="Credito" [filter]="true" [editable]="true" filterPlaceholder="Search">
     </p-column>
     <p-column field="saldo" header="Saldo" [filter]="true" [editable]="true" filterPlaceholder="Search">
     </p-column>

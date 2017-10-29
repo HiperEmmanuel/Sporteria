@@ -7,25 +7,31 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class ConexionService {
   items: FirebaseListObservable<any[]>;
-  get_auth() {
+  public user: Observable<firebase.User>;
+  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
+    this.user = afAuth.authState;
+   }
+  public get_auth() {
     return this.afAuth.authState;
   }
-  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
-   }
 
    get_clientes() {
      return this.af.list('/cliente');
    }
   login(event) {
-    let email = this.af.list('/ids', { query: {equalTo: event['id']} })[0];
-    return this.af.list('/ids', { query: { equalTo: event['id'] } }).subscribe();
-    // this.afAuth.auth.signInWithEmailAndPassword(email['email'], 'Admin12++').catch(function (error) {
-    // });
+    const email = this.af.object('/ids/' + event[0]);
+    email.subscribe(ar => {
+      this.afAuth.auth.signInWithEmailAndPassword(ar.email, event[1]).then(val => console.log('success')
+      ).catch(function (error) {
+        console.log(error.message);
+      });
+    });
   }
   logout() {
     this.afAuth.auth.signOut();
   }
   Send(event) {
+    this.af.list('/cliente').subscribe(val => event.id = 100 + val.length);
     const clientes = this.af.object('/cliente/' + event.id);
     clientes.set(event);  // .push({[event.id]: event});
   }
