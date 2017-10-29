@@ -15,6 +15,10 @@ export class ConexionService {
     return this.afAuth.authState;
   }
 
+  public get_users() {
+    return this.af.list('/ids');
+  }
+
    get_clientes() {
      return this.af.list('/cliente');
    }
