@@ -4,6 +4,7 @@ import { ConexionService } from './conexion.service';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'

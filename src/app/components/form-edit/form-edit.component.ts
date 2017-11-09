@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Form, NgModel} from '@angular/forms';
+import {FileUploadModule} from 'primeng/primeng';
+import {CaptchaModule} from 'primeng/primeng';
 
 @Component({
   selector: 'app-form-edit',
@@ -10,19 +12,19 @@ export class FormEditComponent implements OnInit {
   obj = new Item;
   new_obj = {};
   constructor() {
-    this.obj.id = 100;
-  this.obj.email = 'el@gmail.com';
-  this.obj.curp = 'fj389g9538hg93h3g';
-  this.obj.name = 'ema';
-  this.obj.app = 'alva';
-  this.obj.apm = 'to';
-  this.obj.sex = 'M';
-  this.obj.numcel = '56905640';
-  this.obj.bank = 'HSBC';
-  this.obj.numcred = 902493049823094;
-  this.obj.interkey = 960970569756756;
-  this.obj.credit = 5000;
-  this.obj.registerdate = '16/09/2017';
+    this.obj.id = 0;
+  this.obj.email = '';
+  this.obj.curp = '';
+  this.obj.name = '';
+  this.obj.app = '';
+  this.obj.apm = '';
+  this.obj.sex = '';
+  this.obj.numcel = '';
+  this.obj.bank = '';
+  this.obj.numcred = 0;
+  this.obj.interkey = 0;
+  this.obj.credit = 0;
+  this.obj.registerdate = '';
   this.obj.recomendeds = 0;
    }
 
@@ -78,4 +80,28 @@ export class Item {
   public pago: Number = 0;
   public fecha: string = 'N/A';
   public nota: string = 'N/A';
+}
+export class FileUploadDemo {
+  
+      msgs: any[];
+      
+      uploadedFiles: any[] = [];
+  
+      onUpload(event) {
+          for(let file of event.files) {
+              this.uploadedFiles.push(file);
+          }
+      
+          this.msgs = [];
+          this.msgs.push({severity: 'info', summary: 'File Uploaded', detail: ''});
+      }
+  }
+  export class CaptchaDemo {
+    
+    msgs: any[] = [];
+    
+    showResponse(event) {
+        this.msgs = [];
+        this.msgs.push({severity:'info', summary:'Succees', detail: 'User Responded'});
+    }
 }

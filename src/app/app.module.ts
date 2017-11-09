@@ -20,6 +20,10 @@ import { ReporteComponent } from './components/reporte/reporte.component';
 import { AdminComponent } from './admin/admin.component';
 import { ConexionService } from './conexion.service';
 import { BuscadorReporteComponent } from './components/buscador-reporte/buscador-reporte.component';
+import {InputTextModule} from 'primeng/primeng';
+import {FileUploadModule} from 'primeng/primeng';
+import {CaptchaModule} from 'primeng/primeng';
+import {GrowlModule} from 'primeng/primeng';
 
 const routes: Routes = [
   { path: '', component: TableComponent },
@@ -60,7 +64,11 @@ export const firebaseConfig = {
     DropdownModule,
     InplaceModule,
     InputMaskModule,
-    SharedModule
+    SharedModule,
+    InputTextModule,
+    FileUploadModule,
+    CaptchaModule,
+    GrowlModule
   ],
   providers: [ConexionService],
   bootstrap: [AppComponent]
