@@ -8,12 +8,26 @@ import { ConexionService } from '../../conexion.service';
   styles: []
 })
 
-export class TableComponent {
+export class TableComponent implements OnInit {
   public nw: boolean;
   public users: FirebaseListObservable<any[]>;
   @Output() sv = new EventEmitter();
    public edited: boolean[];
    n: number;
+   fecha = Date;
+   es: any;
+   ngOnInit() {
+    this.es = {
+        firstDayOfWeek: 1,
+        dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
+        dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
+        dayNamesMin: [ "D","L","M","X","J","V","S" ],
+        monthNames: [ "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre" ],
+        monthNamesShort: [ "ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic" ],
+        today: 'Hoy',
+        clear: 'Borrar'
+    }
+  }
 
    cars: any[];
    desc: any[];
@@ -38,4 +52,6 @@ export class TableComponent {
    sendtosavetoo(event) {
      this.conexion.Send(event);
    }
+   
 }
+

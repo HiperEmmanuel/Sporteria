@@ -24,6 +24,7 @@ import {InputTextModule} from 'primeng/primeng';
 import {FileUploadModule} from 'primeng/primeng';
 import {CaptchaModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
+import {recaptcha2} from 'recaptcha2/index';
 
 const routes: Routes = [
   { path: '', component: TableComponent },

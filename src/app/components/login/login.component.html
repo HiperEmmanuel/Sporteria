@@ -1,6 +1,58 @@
-<section class="Login" role="log">
+<section class="Login">
+    
+    <div class="wrapper">
+    <form class="form-signin form-group">       
+      <h2 class="form-signin-heading text-warning">Ingresar</h2>
+      
+      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+      <input type="text" class="form-control" [(ngModel)]="this.user" name="user" placeholder="Email" required="" autofocus="" />
+      <input type="password" class="form-control" [(ngModel)]="this.password" name="pass" placeholder="Contraseña" required=""/>
+        
+      <label class="checkbox col-4 text-warning">
+        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">Recordar
+      </label>
+        <a class="recuperar-pass col-4 text-warning" data-toggle="modal" data-target="#password">Restablecer contraseña</a>
+        
+      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="this.loguear($event);">Ingresar</button>   
+    </form>
+  </div>
+  
+    <div class="modal fade" id="password" tabindex="-1" role="dialog" aria-labelledby="password" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-warning">
+      <div class="modal-header">
+        <h5 class="modal-title" id="password">Recuperar contraseña</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body form-group">
+        <span>Introduzca su correo electronico para restablecer su contraseña:</span>
+          <input type="text" class="form-control" name="username" placeholder="Email" required="" autofocus="" />
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" >Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+    </section>
+<!--section class="Login" role="log">
     <div class="container-fluid">
-        <!-- Modal -->
+
+
+
+        <div class="container">
+
+            <div class="row">
+
+                
+            </div>
+
+        </div>
+        
         <div class="modal fade" id="logueo" tabindex="-2" role="dialog" aria-labelledby="logueo" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -33,4 +85,4 @@
         </div>
     </div>
 
-</section>
+</section-->

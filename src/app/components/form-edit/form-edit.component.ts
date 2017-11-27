@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Form, NgModel} from '@angular/forms';
 import {FileUploadModule} from 'primeng/primeng';
 import {CaptchaModule} from 'primeng/primeng';
+import {recaptcha2} from 'recaptcha2/index';
 
 @Component({
   selector: 'app-form-edit',
@@ -93,15 +94,19 @@ export class FileUploadDemo {
           }
       
           this.msgs = [];
-          this.msgs.push({severity: 'info', summary: 'File Uploaded', detail: ''});
+          this.msgs.push({severity: 'info', summary: 'Archivo subido', detail: 'La imagen ha sido subida con exito.'});
       }
   }
-  export class CaptchaDemo {
+  export class Captcha {
     
-    msgs: any[] = [];
-    
+    msgsc: any[] = [];
     showResponse(event) {
-        this.msgs = [];
-        this.msgs.push({severity:'info', summary:'Succees', detail: 'User Responded'});
+        this.msgsc = [];
+        this.msgsc.push({severity:'info', summary:'Completado', detail: 'Se a validado que no es robot'});
     }
+  
+//   recaptcha = new reCAPTCHA ({
+  //   siteKey: '6LdM6TcUAAAAAClUMtihza2lUXmyD-hERDkLEpPE',
+  //   secretKey: '6LdM6TcUAAAAAMudsXzzaSSvhm2VYX5xDZWE9_Kv'
+  // })
 }

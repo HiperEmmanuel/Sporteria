@@ -2,7 +2,12 @@
     <h5 class="text-center alert alert-info my-1 col-12 col-md-6 offset-md-3">Proporcione la siguiente información.</h5>
     <div class="row">
 
-        <form class="col-12 col-md-6 justify-content-center">
+            <form class="row col-12">
+                    <div class="col-12 col-md-6 justify-content-center">
+                            <div class="form-group">
+                                    <label for="agregarForm">ID de casino</label>
+                                    <input type="number" class="form-control" placeholder="ID dentro de sporteria" maxlength="8"  required>
+                                </div>
             <div class="form-group">
                 <label for="agregarForm">Correo electrónico</label>
                 <input type="email" [(ngModel)]="obj.email" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="correo@sporteria.mx" required>
@@ -23,32 +28,43 @@
                 <label for="agregarForm">Apellido Materno</label>
                 <input type="email" [(ngModel)]="obj.apm" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Apellido Materno">
             </div>
-            <div class="form-group">
-                <label for="agregarForm">Sexo</label>
-                <div class="form-check">
+            <div class="form-inline">
+                    <label for="agregarForm" class="h6 m-3">Sexo:</label>
+                    <div class="form-check">
 
-                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" [(ngModel)]="obj.sex" [ngModelOptions]="{standalone: true}" name="" id="" value="M" checked>
-                                            Masculino
-                                    </label>
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="" id="" value="M" checked>
+                            Masculino
+                    </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="" id="" value="F">
+                            Femenino
+                    </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="" id="" value="O">
+                            Otro
+                    </label>
+                    </div>
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" [(ngModel)]="obj.sex" [ngModelOptions]="{standalone: true}" name="" id="" value="F">
-                                            Femenino
-                                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" [(ngModel)]="obj.sex" [ngModelOptions]="{standalone: true}" name="" id="" value="O">
-                                            Otro
-                                    </label>
-                </div>
-            </div>
             <div class="form-group">
                 <label for="agregarForm">Numero celular</label>
                 <input type="tel" class="form-control" [(ngModel)]="obj.numcel" [ngModelOptions]="{standalone: true}" placeholder="6671777617" size="10" required>
             </div>
+            <div class="form-group">
+                <label for="agregarForm">Referido por:</label>
+                <select name="Referido" class="form-control">
+                    <option value="1">Nadie</option>
+                    <!-- Apareceran los clientes dados de alta anteriormente.-->
+                    </select>
+            </div>
+        </div>
+        
+        <div class="col-12 col-md-6 justify-content-center">
+        
             <div class="form-group">
                 <label for="agregarForm">Banco</label>
                 <select [(ngModel)]="obj.bank" [ngModelOptions]="{standalone: true}" name="Banco" class="form-control">
@@ -70,8 +86,12 @@
 
             
         <p-growl [value]="msgs"></p-growl>
-            <h3 class="first">Identificación oficial</h3>
-        <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" 
+            
+        
+
+            <div class="form-group">
+                <label for="agregarForm">Foto de identificación oficial</label>
+                <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" 
                 multiple="multiple" accept="image/*" maxFileSize="1000000">
             <ng-template pTemplate type="content">
                 <ul *ngIf="uploadedFiles.length">
@@ -79,23 +99,30 @@
                 </ul>
             </ng-template>        
         </p-fileUpload>
-
-            <div class="form-group">
-                <label for="agregarForm">Foto de identificación oficial</label>
-                <input type="file" class="form-control-file" id="INE">
+        <!-- Esta barra sale cuando se suban imagenes, tambien para el siguiente formulario-->
+<div class="progress"> <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: 62%" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"></div> </div>
             </div>
             <div class="form-group">
                 <label for="agregarForm">Imagen de confirmación</label>
-                <input type="file" class="form-control-file" id="confirmacion">
+                <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" 
+                multiple="multiple" accept="image/*" maxFileSize="1000000">
+            <ng-template pTemplate type="content">
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>        
+        </p-fileUpload>
             </div>
             <div class="form-group">
                 
-            <p-growl [value]="msgs" sticky="sticky"></p-growl>
+            <p-growl [value]="msgsc" sticky="sticky"></p-growl>
             
-            <p-captcha siteKey="6Lf2XQkTAAAAANcvOwYqPxWL4iZDksFqHpS39GDA" (onResponse)="showResponse($event)" theme="dark" lenguage=""></p-captcha>
+            <p-captcha siteKey="6LdM6TcUAAAAAClUMtihza2lUXmyD-hERDkLEpPE" (onResponse)="showResponse($event)" lenguage="es" theme="dark"></p-captcha>
         
                 <input type="button" (click)='save_client()' class="form-control btn-success" value="Guardar">
             </div>
+        </div>
         </form>
     </div>
 </div>
+<script src = ' https://www.google.com/recaptcha/api.js '> </ script>
