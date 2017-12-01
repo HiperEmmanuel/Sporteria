@@ -12,6 +12,7 @@ export class HeaderComponent {
   @Input()
   user2: Observable<firebase.User>;
   info: any;
+  name: string = '';
   admin = false;
   constructor(public conexion: ConexionService) {
     this.user2 = this.conexion.get_auth();
@@ -24,6 +25,7 @@ export class HeaderComponent {
             this.info = a;
             if (this.info.permisos === 2) {
               this.admin = true;
+              this.name = this.info.general.nombre;
             }
           }
         });

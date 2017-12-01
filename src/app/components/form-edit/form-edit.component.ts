@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {Form, NgModel} from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, OnChanges} from '@angular/core';
+import { FormGroup, FormArray, FormBuilder, Validators, ReactiveFormsModule , NgForm, FormControl  } from '@angular/forms';
 import {FileUploadModule} from 'primeng/primeng';
 import {CaptchaModule} from 'primeng/primeng';
 import {recaptcha2} from 'recaptcha2/index';
@@ -10,9 +10,13 @@ import {recaptcha2} from 'recaptcha2/index';
   styleUrls: ['./form-edit.component.css']
 })
 export class FormEditComponent implements OnInit {
+  @ViewChild('formpro') formpro: NgForm;
+  agregarCliente: FormGroup;
+  mensaje: any;
   obj = new Item;
   new_obj = {};
-  constructor() {
+
+  constructor(private formBuilder: FormBuilder) {
     this.obj.id = 0;
   this.obj.email = '';
   this.obj.curp = '';
@@ -28,6 +32,70 @@ export class FormEditComponent implements OnInit {
   this.obj.registerdate = '';
   this.obj.recomendeds = 0;
    }
+
+guardarCliente() {
+  const guardarCliente = {
+    IDCasino: this.agregarCliente.get('IDCasino').value,
+    Email: this.agregarCliente.get('Email').value,
+    Curp: this.agregarCliente.get('Curp').value,
+    Nombre: this.agregarCliente.get('Nombre').value,
+    Apellido: this.agregarCliente.get('Apellido').value,
+    ApellidoM: this.agregarCliente.get('ApellidoM').value,
+    Celular: this.agregarCliente.get('Celular').value,
+    Sexo: this.agregarCliente.get('Sexo').value,
+    Referido: this.agregarCliente.get('Referido').value,
+    Banco: this.agregarCliente.get('Banco').value,
+    Tarjeta: this.agregarCliente.get('Tarjeta').value,
+    Clabe: this.agregarCliente.get('Clabe').value,
+    Credito: this.agregarCliente.get('Credito').value,
+    Confirmacion: this.agregarCliente.get('Confirmacion').value,
+    Identificacion: this.agregarCliente.get('Identificacion').value
+  };
+  return guardarCliente;
+}
+   ngOnInit() {
+    this.agregarCliente = this.formBuilder.group({
+      IDCasino: ['', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(8)]
+      ],
+      Email: ['', [
+        Validators.required,
+        Validators.email]
+      ],
+      Curp: ['', [
+        Validators.required,
+        Validators.minLength(18),
+      Validators.maxLength(18)]
+      ],
+      Nombre: ['', [
+        Validators.required]
+      ],
+      Apellido: ['', [
+        Validators.required]
+      ],
+      Celular: ['', [
+        Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(10)]
+      ],
+      Tarjeta: ['', [
+        Validators.required,
+        Validators.minLength(16),
+        Validators.maxLength(16)]
+      ],
+      Clabe: ['', [
+        Validators.required,
+        Validators.minLength(18),
+        Validators.maxLength(18)]
+      ]
+    });
+  }
+
+  onSubmit(){
+    
+  }
 
 @Output() sendtosave = new EventEmitter();
 
@@ -56,8 +124,6 @@ this.new_obj = {
       this.sendtosave.emit(this.new_obj);
       this.obj = new Item;
    }
-  ngOnInit() {
-  }
 
 }
 
@@ -82,10 +148,13 @@ export class Item {
   public fecha: string = 'N/A';
   public nota: string = 'N/A';
 }
+
 export class FileUploadDemo {
   
       msgs: any[];
-      
+      chooseLabel: string = "Agregar";
+      uploadLabel: string = "Subir";
+      cancelLabel: string = "Cancelar";
       uploadedFiles: any[] = [];
   
       onUpload(event) {
@@ -109,4 +178,5 @@ export class FileUploadDemo {
   //   siteKey: '6LdM6TcUAAAAAClUMtihza2lUXmyD-hERDkLEpPE',
   //   secretKey: '6LdM6TcUAAAAAMudsXzzaSSvhm2VYX5xDZWE9_Kv'
   // })
+  
 }

@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgIf } from '@angular/common';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InplaceModule, InputMaskModule, DataTableModule, SharedModule, CalendarModule, DropdownModule } from 'primeng/primeng';
 
 
@@ -60,6 +62,8 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     DataTableModule,
     CalendarModule,
     DropdownModule,

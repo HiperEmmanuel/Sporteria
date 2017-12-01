@@ -35,7 +35,7 @@
             </p-column>
             <p-column field="fecha" header="Fecha/pago" [filter]="true" [editable]="true" filterMatchMode="in">
                 <ng-template pTemplate="filter" let-col>
-                    <p-calendar [(ngModel)]="rangeDates" selectionMode="range"[locale]="es" dateFormat="dd/mm/yy" {{fecha|date}} readonlyInput="true"></p-calendar>
+                    <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [locale]="es" dateFormat="dd/mm/yy" readonlyInput="true"></p-calendar>
                 </ng-template>
             </p-column>
             <p-column field="nota" header="Nota">

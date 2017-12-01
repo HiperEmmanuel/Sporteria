@@ -2,31 +2,41 @@
     <h5 class="text-center alert alert-info my-1 col-12 col-md-6 offset-md-3">Proporcione la siguiente información.</h5>
     <div class="row">
 
-            <form class="row col-12">
+            <form [formGroup]="agregarCliente" class="row col-12" (ngSubmit)="onSubmit()" data-toogle="validator">
                     <div class="col-12 col-md-6 justify-content-center">
                             <div class="form-group">
                                     <label for="agregarForm">ID de casino</label>
-                                    <input type="number" class="form-control" placeholder="ID dentro de sporteria" maxlength="8"  required>
+                                    
+                                    <i class="fa fa-check-circle check" *ngIf="agregarCliente.controls['IDCasino'].valid"></i>
+                                    <i class="fa fa-exclamation-circle uncheck" *ngIf="agregarCliente.controls['IDCasino'].invalid && agregarCliente.controls['IDCasino.']touched"></i>
+                                    
+                                    <input type="number" formControlName="IDCasino" class="form-control is-valid" placeholder="ID dentro de sporteria" maxlength="8"  required>
                                 </div>
             <div class="form-group">
                 <label for="agregarForm">Correo electrónico</label>
-                <input type="email" [(ngModel)]="obj.email" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="correo@sporteria.mx" required>
+                <i class="fa fa-check-circle check" *ngIf="agregarCliente.controls.Email.valid"></i>
+                <i class="fa fa-exclamation-circle uncheck" *ngIf="agregarCliente.controls.Email.invalid && agregarCliente.controls.Email.touched"></i>
+                <input type="email" formControlName="Email" data-error="Bruh, that email address is invalid"  class="form-control" placeholder="correo@sporteria.mx" required>
+                
+                <p class="alert alert-danger" *ngIf="agregarCliente.controls.Email.invalid && agregarCliente.controls.Email.touched">
+                  El campo Fecha es obligatorio
+                </p>
             </div>
             <div class="form-group">
                 <label for="agregarForm">CURP</label>
-                <input type="text" [(ngModel)]="obj.curp" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="CURP" size="18" minlength="18" required>
+                <input type="text" formControlName="Curp"  class="form-control" placeholder="CURP" size="18" minlength="18" required>
             </div>
             <div class="form-group">
                 <label for="agregarForm">Nombre</label>
-                <input type="text" [(ngModel)]="obj.name" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Nombre(s)" required>
+                <input type="text" formControlName="Nombre" class="form-control" placeholder="Nombre(s)" required>
             </div>
             <div class="form-group">
                 <label for="agregarForm">Apellido Paterno</label>
-                <input type="email" [(ngModel)]="obj.app" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Apellido Paterno" required>
+                <input type="email" formControlName="ApellidoP"  class="form-control" placeholder="Apellido Paterno" required>
             </div>
             <div class="form-group">
                 <label for="agregarForm">Apellido Materno</label>
-                <input type="email" [(ngModel)]="obj.apm" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Apellido Materno">
+                <input type="email"  class="form-control" placeholder="Apellido Materno">
             </div>
             <div class="form-inline">
                     <label for="agregarForm" class="h6 m-3">Sexo:</label>
@@ -52,7 +62,7 @@
                 </div>
             <div class="form-group">
                 <label for="agregarForm">Numero celular</label>
-                <input type="tel" class="form-control" [(ngModel)]="obj.numcel" [ngModelOptions]="{standalone: true}" placeholder="6671777617" size="10" required>
+                <input type="tel" formControlName="Celular" class="form-control"  placeholder="6671777617" size="10" required>
             </div>
             <div class="form-group">
                 <label for="agregarForm">Referido por:</label>
@@ -67,17 +77,17 @@
         
             <div class="form-group">
                 <label for="agregarForm">Banco</label>
-                <select [(ngModel)]="obj.bank" [ngModelOptions]="{standalone: true}" name="Banco" class="form-control">
+                <select [(ngModel)]="obj.bank" name="Banco" class="form-control">
                                     <option value="1">Banamex</option>
                                     </select>
             </div>
             <div class="form-group">
                 <label for="agregarForm">Numero de tarjeta</label>
-                <input type="number" [(ngModel)]="obj.numcred" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="16 digitos" size="16">
+                <input type="number" formControlName="Tarjeta" [(ngModel)]="obj.numcred"  class="form-control" placeholder="16 digitos" size="16">
             </div>
             <div class="form-group">
                 <label for="agregarForm">Clabe Interbancaria</label>
-                <input type="number" [(ngModel)]="obj.interkey" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="18 digitos" size="18">
+                <input type="number" formControlName="Clabe" [(ngModel)]="obj.interkey"  class="form-control" placeholder="18 digitos" size="18">
             </div>
             <div class="form-group">
                 <label for="agregarForm">Credito</label>
@@ -85,7 +95,7 @@
             </div>
 
             
-        <p-growl [value]="msgs"></p-growl>
+         <p-growl [value]="msgs"></p-growl>
             
         
 
@@ -117,7 +127,7 @@
                 
             <p-growl [value]="msgsc" sticky="sticky"></p-growl>
             
-            <p-captcha siteKey="6LdM6TcUAAAAAClUMtihza2lUXmyD-hERDkLEpPE" (onResponse)="showResponse($event)" lenguage="es" theme="dark"></p-captcha>
+            <p-captcha siteKey="6LdM6TcUAAAAAClUMtihza2lUXmyD-hERDkLEpPE"  lenguage="es" theme="dark"></p-captcha>
         
                 <input type="button" (click)='save_client()' class="form-control btn-success" value="Guardar">
             </div>

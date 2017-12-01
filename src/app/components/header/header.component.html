@@ -4,8 +4,6 @@
             <div class="row">
                 <button id="boton-menu" class="navbar-toggler text-left py-4 col-2 order-1" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-
-
   </button>
 
                 <a href="http://www.sporteria.mx" class="logo text-center order-2 order-lg-1 col-8">
@@ -28,10 +26,10 @@
                     <a class="nav-link disabled" routerLink='/admin-panel' routerLinkActive='active'>Configuración</a>
                 </li>
                 <li class="hidden-md-down">
-                    <p class="py-2 mx-2 text-warning">Conectado como: <span class="font-weight-bold text-capitalize">Nombre de afiliado</span></p>
+                    <p class="py-2 mx-2 text-warning">Conectado como: <span class="font-weight-bold text-capitalize">{{ name }}</span></p>
                 </li>
                 <li *ngIf='user2|async' class="nav-item">
-                    <button class="nav-link btn btn-danger col-12" routerLink='/log-out' routerLinkActive='inactive'><i class="fa fa-sign-out" aria-hidden="true">Salir</i></button>
+                    <button (click) = 'conexion.logout()' class="nav-link btn btn-danger col-12" routerLink='/log-out' routerLinkActive='inactive'><i class="fa fa-sign-out" aria-hidden="true">Salir</i></button>
                 </li>
                 
             </ul>
