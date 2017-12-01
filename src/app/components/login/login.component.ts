@@ -9,10 +9,14 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   public user: string;
   public password: string;
+  public email:string;
   private info: string[];
   @Output() loge = new EventEmitter();
   constructor(private conexion: ConexionService, private router: Router) { }
 
+  reset(){
+    this.conexion.reset(this.email);
+  }
   ngOnInit() {
   }
 

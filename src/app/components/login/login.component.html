@@ -28,11 +28,11 @@
       </div>
       <div class="modal-body form-group">
         <span>Introduzca su correo electronico para restablecer su contraseña:</span>
-          <input type="text" class="form-control" name="username" placeholder="Email" required="" autofocus="" />
+          <input type="text" class="form-control" [(ngModel)]='email' name="username" placeholder="Email" required="" autofocus="" />
         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" >Enviar</button>
+        <button type="button" (click)='reset()' class="btn btn-success" >Enviar</button>
       </div>
     </div>
   </div>
