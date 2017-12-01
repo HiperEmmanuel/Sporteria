@@ -152,9 +152,9 @@ export class Item {
 export class FileUploadDemo {
   
       msgs: any[];
-      chooseLabel: string = "Agregar";
-      uploadLabel: string = "Subir";
-      cancelLabel: string = "Cancelar";
+      //chooseLabel: string = "Agregar";
+      //uploadLabel: string = "Subir";
+      //cancelLabel: string = "Cancelar";
       uploadedFiles: any[] = [];
   
       onUpload(event) {

@@ -23,9 +23,9 @@
                     <a class="nav-link" routerLink='/reportes' routerLinkActive='active'>Reportes</a>
                 </li>
                 <li *ngIf='admin' class="nav-item">
-                    <a class="nav-link disabled" routerLink='/admin-panel' routerLinkActive='active'>Configuración</a>
+                    <a class="nav-link" routerLink='/admin-panel' routerLinkActive='active'>Configuración</a>
                 </li>
-                <li class="hidden-md-down">
+                <li class="hidden-md-down" *ngIf='user2|async'>
                     <p class="py-2 mx-2 text-warning">Conectado como: <span class="font-weight-bold text-capitalize">{{ name }}</span></p>
                 </li>
                 <li *ngIf='user2|async' class="nav-item">

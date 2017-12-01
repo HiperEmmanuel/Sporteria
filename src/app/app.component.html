@@ -1,8 +1,4 @@
-<app-header [user2]='user2'></app-header>
-<!--Mira aqui lo unico que tienes que hacer es ponerle un ngIF al app-login para que desaparezca cuando este logueado
-de esta forma no tendrias que pasar varias como habias dicho... pero lo correcto es que aqui el app.component solo tenga
- rutas -->
- 
+<app-header [user2]='user2'></app-header> 
     <div *ngIf='user2|async; else ok'>
         <router-outlet></router-outlet>
     </div>
