@@ -150,30 +150,26 @@ export class Item {
 }
 
 export class FileUploadDemo {
-  
+
       msgs: any[];
-      //chooseLabel: string = "Agregar";
-      //uploadLabel: string = "Subir";
-      //cancelLabel: string = "Cancelar";
       uploadedFiles: any[] = [];
-  
       onUpload(event) {
           for(let file of event.files) {
               this.uploadedFiles.push(file);
           }
-      
+
           this.msgs = [];
           this.msgs.push({severity: 'info', summary: 'Archivo subido', detail: 'La imagen ha sido subida con exito.'});
       }
   }
   export class Captcha {
-    
+
     msgsc: any[] = [];
     showResponse(event) {
         this.msgsc = [];
-        this.msgsc.push({severity:'info', summary:'Completado', detail: 'Se a validado que no es robot'});
+        this.msgsc.push({severity: 'info', summary: 'Completado', detail: 'Se a validado que no es robot'});
     }
-  
+
 //   recaptcha = new reCAPTCHA ({
   //   siteKey: '6LdM6TcUAAAAAClUMtihza2lUXmyD-hERDkLEpPE',
   //   secretKey: '6LdM6TcUAAAAAMudsXzzaSSvhm2VYX5xDZWE9_Kv'
