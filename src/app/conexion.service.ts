@@ -41,7 +41,7 @@ export class ConexionService {
     });
     //});
   }
-  .sendPasswordResetEmail(this.user.email)
+ 
   logout() {
     this.afAuth.auth.signOut();
     this.router.navigate(['/']);
