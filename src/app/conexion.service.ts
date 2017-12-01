@@ -32,6 +32,16 @@ export class ConexionService {
       });
     //});
   }
+  reset(event) {
+    //const email = this.af.object('/ids/' + event[0]);
+    //email.subscribe(ar => {
+    this.afAuth.auth.sendPasswordResetEmail(event).then(val => console.log('mensaje enviado')
+    ).catch(function (error) {
+      console.log(error.message);
+    });
+    //});
+  }
+  .sendPasswordResetEmail(this.user.email)
   logout() {
     this.afAuth.auth.signOut();
     this.router.navigate(['/']);
