@@ -16,10 +16,10 @@
                 <label for="agregarForm">Correo electrónico</label>
                 <i class="fa fa-check-circle check" *ngIf="agregarCliente.controls.Email.valid"></i>
                 <i class="fa fa-exclamation-circle uncheck" *ngIf="agregarCliente.controls.Email.invalid && agregarCliente.controls.Email.touched"></i>
-                <input type="email" formControlName="Email" data-error="Bruh, that email address is invalid"  class="form-control" placeholder="correo@sporteria.mx" required>
+                <input type="email" formControlName="Email" data-error="Esta no es una direccion de correo válida."  class="form-control" placeholder="correo@sporteria.mx" required>
                 
-                <p class="alert alert-danger" *ngIf="agregarCliente.controls.Email.invalid && agregarCliente.controls.Email.touched">
-                  El campo Fecha es obligatorio
+                <p class="text-danger" *ngIf="agregarCliente.controls.Email.invalid && agregarCliente.controls.Email.touched">
+                  *El campo Correo electrónico es obligatorio.
                 </p>
             </div>
             <div class="form-group">
