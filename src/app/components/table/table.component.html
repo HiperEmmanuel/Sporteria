@@ -10,40 +10,40 @@
         <button (click)="add_nw()" type="button" class="btn btn-tabla-agregar btn- btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
     </div>
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center ui-datatable">
             <!-- assaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
             
-        </div>
+        
         <p-dataTable resizableColumns="true" [value]="users|async" [rows]="10" expandableRows="true" [editable]="true" [paginator]="true" [globalFilter]="gb" #dt>
             <p-header>Clientes</p-header>
-            <p-column expander="true" styleClass="col-icon"></p-column>
-            <p-column field="id" header="ID" [filter]="true" filterPlaceholder="Buscar"></p-column>
-            <p-column field="name" header="Nombre" [filter]="true" filterPlaceholder="Buscar">
+            <p-column class="ui-datatable-responsive" expander="true" styleClass="col-icon"></p-column>
+            <p-column class="ui-datatable-responsive" field="id" header="ID" [filter]="true" filterPlaceholder="Buscar"></p-column>
+            <p-column class="ui-datatable-responsive" field="name" header="Nombre" [filter]="true" filterPlaceholder="Buscar">
             </p-column>
-            <p-column field="credit" header="Credito" [filter]="true" [editable]="true" filterPlaceholder="Buscar">
+            <p-column class="ui-datatable-responsive" field="credit" header="Credito" [filter]="true" [editable]="true" filterPlaceholder="Buscar">
             </p-column>
-            <p-column field="saldo" header="Saldo" [filter]="true" [editable]="true" filterPlaceholder="Buscar">
+            <p-column class="ui-datatable-responsive" field="saldo" header="Saldo" [filter]="true" [editable]="true" filterPlaceholder="Buscar">
             </p-column>
-            <p-column field="neto" header="Neto" [filter]="true" filterPlaceholder="Buscar">
+            <p-column class="ui-datatable-responsive" field="neto" header="Neto" [filter]="true" filterPlaceholder="Buscar">
                 <ng-template let-client="rowData" pTemplate="body" let-col>
                     <div><p>{{client.credit - client.saldo}}</p></div>
                 </ng-template>
             </p-column>
-            <p-column field="descuento" header="Descuento" [filter]="true" [editable]="true" filterMatchMode="equals">
+            <p-column class="ui-datatable-responsive" field="descuento" header="Descuento" [filter]="true" [editable]="true" filterMatchMode="equals">
                 <ng-template pTemplate="filter" let-col>
                     <p-dropdown [options]="desc" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-dropdown>
                 </ng-template>
             </p-column>
-            <p-column field="pago" header="Pago" [filter]="true" [editable]="true" filterMatchMode="in">
+            <p-column class="ui-datatable-responsive" field="pago" header="Pago" [filter]="true" [editable]="true" filterMatchMode="in">
             </p-column>
-            <p-column field="fecha" header="Fecha/pago" [filter]="true" [editable]="true" filterMatchMode="in">
+            <p-column class="ui-datatable-responsive" field="fecha" header="Fecha/pago" [filter]="true" [editable]="true" filterMatchMode="in">
                 <ng-template pTemplate="filter" let-col>
                    <div><p-calendar [(ngModel)]="rangeDates" selectionMode="range" [locale]="es" dateFormat="dd/mm/yy" readonlyInput="true"></p-calendar></div>
                 </ng-template>
             </p-column>
-            <p-column field="nota" [editable]="true" header="Nota">
+            <p-column class="ui-datatable-responsive" field="nota" [editable]="true" header="Nota">
             </p-column>
-            <p-column styleClass="col-icon">
+            <p-column class="ui-datatable-responsive" styleClass="col-icon">
                 <ng-template let-client="rowData" pTemplate="body" let-col>
                     <button (click)="saveClient(client)" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
                 </ng-template>
@@ -64,25 +64,25 @@
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Banco: </div>
-                                    <div class="ui-grid-col-4">      
+                                    <div class="ui-grid-col-2">      
                                  {{car.bank}}
                                     </div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Telefono: </div>
-                                    <div class="ui-grid-col-1">         
+                                    <div class="ui-grid-col-2">         
                                     {{car.numcel}}
                                     </div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Fecha de registro: </div>
-                                    <div class="ui-grid-col-1">
+                                    <div class="ui-grid-col-2">
                                         {{car.registerdate}}
                                     </div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Recomendados: </div>
-                                    <div class="ui-grid-col-1">
+                                    <div class="ui-grid-col-2">
                                  {{car.recomendeds}}
                                     </div>
                                 </div>
@@ -94,7 +94,7 @@
         </p-dataTable>
         <!-- <<<<<<<<<<<<<<<<<<<<<<<<<< -->
     </div>
-
+</div>
 </section>
 
 <p-growl [(value)]="msgs"></p-growl>
@@ -137,7 +137,7 @@
     </div>
     <p-footer>
         <div class="ui-dialog-buttonpane ui-helper-clearfix">
-            <button type="button" pButton icon="fa-check" (click)="displayDialog = false" label="Save"></button>
+            <button type="button" pButton icon="fa-floppy-o" (click)="displayDialog = false" label="Guardar"></button>
         </div>
     </p-footer>
 </p-dialog>
