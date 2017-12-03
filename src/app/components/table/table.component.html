@@ -75,7 +75,6 @@
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Banco: </div>
-<<<<<<< HEAD
                                     <div class="ui-grid-col-4">
                                         <p-inplace closable="closable">
                                             <span pInplaceDisplay *ngIf="car.bank == 1">
@@ -85,15 +84,10 @@
                                                 <input type="text" [(ngModel)]="car.bank" value="{{car.bank}}" pInputText>
                                             </span>
                                         </p-inplace>
-=======
-                                    <div class="ui-grid-col-2">      
-                                 {{car.bank}}
->>>>>>> 6bc619624b6519fd80e897ebb0c8b398f276cc3d
                                     </div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Telefono: </div>
-<<<<<<< HEAD
                                     <div class="ui-grid-col-1">         
                                     <p-inplace closable="closable">
                                         <span pInplaceDisplay>
@@ -103,15 +97,10 @@
                                             <input type="text" [(ngModel)]="car.numcel" value="{{car.numcel}}" pInputText>
                                         </span>
                                     </p-inplace>
-=======
-                                    <div class="ui-grid-col-2">         
-                                    {{car.numcel}}
->>>>>>> 6bc619624b6519fd80e897ebb0c8b398f276cc3d
                                     </div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Fecha de registro: </div>
-<<<<<<< HEAD
                                     <div class="ui-grid-col-1">
                                         <p-inplace closable="closable">
                                             <span pInplaceDisplay>
@@ -121,15 +110,10 @@
                                                 <input type="text" [(ngModel)]="car.registerdate" value="{{car.registerdate}}" pInputText>
                                             </span>
                                         </p-inplace>
-=======
-                                    <div class="ui-grid-col-2">
-                                        {{car.registerdate}}
->>>>>>> 6bc619624b6519fd80e897ebb0c8b398f276cc3d
                                     </div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Recomendados: </div>
-<<<<<<< HEAD
                                     <div class="ui-grid-col-1">
                                         <p-inplace closable="closable">
                                             <span pInplaceDisplay>
@@ -139,10 +123,6 @@
                                                 <input type="text" [(ngModel)]="car.recomendeds" value="{{car.recomendeds}}" pInputText>
                                             </span>
                                         </p-inplace>
-=======
-                                    <div class="ui-grid-col-2">
-                                 {{car.recomendeds}}
->>>>>>> 6bc619624b6519fd80e897ebb0c8b398f276cc3d
                                     </div>
                                 </div>
                             </div>
@@ -157,49 +137,3 @@
 </section>
 
 <p-growl [(value)]="msgs"></p-growl>
-<<<<<<< HEAD
-=======
-
-<!-- MODAL -->
-<p-dialog header="Editar informacion" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
-    <div class="ui-grid ui-grid-responsive ui-fluid">
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-4">
-                <label for="vin">Numero de cuenta:</label>
-            </div>
-            <div class="ui-grid-col-8">
-                <input type="number" id="color" />
-            </div>
-        </div>
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-4">
-                <label for="year">Banco:</label>
-            </div>
-            <div class="ui-grid-col-8">
-                <input pInputText id="year"/>
-            </div>
-        </div>
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-4">
-                <label for="brand">Telefono:</label>
-            </div>
-            <div class="ui-grid-col-8">
-                <input pInputText id="brand"/>
-            </div>
-        </div>
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-4">
-                <label for="color">Recomendados:</label>
-            </div>
-            <div class="ui-grid-col-8">
-                <input type="number" id="color"/>
-            </div>
-        </div>
-    </div>
-    <p-footer>
-        <div class="ui-dialog-buttonpane ui-helper-clearfix">
-            <button type="button" pButton icon="fa-floppy-o" (click)="displayDialog = false" label="Guardar"></button>
-        </div>
-    </p-footer>
-</p-dialog>
->>>>>>> 6bc619624b6519fd80e897ebb0c8b398f276cc3d
