@@ -34,12 +34,19 @@ export class TableComponent implements OnInit {
    batos: any[];
    rangeDates: Date[];
    yearFilter: number;
+  msgs: any[] = [];
    constructor(private conexion: ConexionService) {
   this.n = 2;
+  
   // this.users.forEach(function(g){this.n++; });
   this.users = this.conexion.get_clientes();
   this.edited = new Array<boolean>(this.n);
    }
+
+  showSuccess() {
+    this.msgs = [];
+    this.msgs.push({ severity: 'success', summary: 'Clientes', detail: 'Guardado Satisfactoriamente' });
+  }
 
    edit_selected(id: string) {
      this.edited[id] = !this.edited[id];
@@ -51,6 +58,11 @@ export class TableComponent implements OnInit {
 
    sendtosavetoo(event) {
      this.conexion.Send(event);
+   }
+
+   saveClient(data) {
+    this.conexion.SaveClient(data);
+     this.showSuccess();
    }
    
 }

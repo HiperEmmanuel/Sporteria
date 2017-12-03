@@ -51,4 +51,9 @@ export class ConexionService {
     const clientes = this.af.object('/cliente/' + event.id);
     clientes.set(event);  // .push({[event.id]: event});
   }
+  SaveClient(event) {
+    const clientes = this.af.object('/cliente/' + event.id);
+    clientes.set(event);
+      // .push({[event.id]: event});
+  }
 }
