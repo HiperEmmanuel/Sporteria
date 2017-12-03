@@ -25,6 +25,9 @@
             <p-column field="saldo" header="Saldo" [filter]="true" [editable]="true" filterPlaceholder="Buscar">
             </p-column>
             <p-column field="neto" header="Neto" [filter]="true" filterPlaceholder="Buscar">
+                <ng-template let-client="rowData" pTemplate="body" let-col>
+                    <div><p>{{client.credit - client.saldo}}</p></div>
+                </ng-template>
             </p-column>
             <p-column field="descuento" header="Descuento" [filter]="true" [editable]="true" filterMatchMode="equals">
                 <ng-template pTemplate="filter" let-col>
