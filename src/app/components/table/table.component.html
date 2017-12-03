@@ -33,6 +33,13 @@
                 <ng-template pTemplate="filter" let-col>
                     <p-dropdown [options]="desc" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-dropdown>
                 </ng-template>
+                <ng-template let-col let-car="rowData" pTemplate="editor">
+                    <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="car[col.field]"></p-inputSwitch>
+                </ng-template>
+                <ng-template let-col let-car="rowData" pTemplate="body">
+                    <span *ngIf='car[col.field]'>15%</span>
+                    <span *ngIf='!car[col.field]'>N/A</span>
+                </ng-template>
             </p-column>
             <p-column field="pago" header="Pago" [filter]="true" [editable]="true" filterMatchMode="in">
             </p-column>
@@ -51,39 +58,71 @@
             <ng-template let-car pTemplate="rowexpansion" expandedIcon="fa-pencil" collapsedIcon="fa-floppy-o ">
                 <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px">
                     <div class="ui-grid-row">
-                        <div class="ui-grid-col-1">
-                            <i class="fa fa-pencil-square-o" (click)="displayDialog = true" aria-hidden="true"></i>
-                        </div>
                         <div class="ui-grid-col-9">
                             <div class="ui-grid ui-grid-responsive ui-grid-pad">
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Numero de cuenta: </div>
                                     <div class="ui-grid-col-4">    
-                                        {{car.numcred}}
+                                        <p-inplace  closable="closable">
+                                            <span pInplaceDisplay>
+                                                 {{car.numcred}}
+                                            </span>
+                                            <span pInplaceContent>
+                                                <input type="text" [(ngModel)]="car.numcred" value="{{car.numcred}}" pInputText>
+                                            </span>
+                                        </p-inplace>
                                     </div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Banco: </div>
-                                    <div class="ui-grid-col-4">      
-                                 {{car.bank}}
+                                    <div class="ui-grid-col-4">
+                                        <p-inplace closable="closable">
+                                            <span pInplaceDisplay *ngIf="car.bank == 1">
+                                                 Banamex
+                                            </span>
+                                            <span pInplaceContent>
+                                                <input type="text" [(ngModel)]="car.bank" value="{{car.bank}}" pInputText>
+                                            </span>
+                                        </p-inplace>
                                     </div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Telefono: </div>
                                     <div class="ui-grid-col-1">         
-                                    {{car.numcel}}
+                                    <p-inplace closable="closable">
+                                        <span pInplaceDisplay>
+                                            {{car.numcel}}
+                                        </span>
+                                        <span pInplaceContent>
+                                            <input type="text" [(ngModel)]="car.numcel" value="{{car.numcel}}" pInputText>
+                                        </span>
+                                    </p-inplace>
                                     </div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Fecha de registro: </div>
                                     <div class="ui-grid-col-1">
-                                        {{car.registerdate}}
+                                        <p-inplace closable="closable">
+                                            <span pInplaceDisplay>
+                                                {{car.registerdate}}
+                                            </span>
+                                            <span pInplaceContent>
+                                                <input type="text" [(ngModel)]="car.registerdate" value="{{car.registerdate}}" pInputText>
+                                            </span>
+                                        </p-inplace>
                                     </div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2 label">Recomendados: </div>
                                     <div class="ui-grid-col-1">
-                                 {{car.recomendeds}}
+                                        <p-inplace closable="closable">
+                                            <span pInplaceDisplay>
+                                                {{car.recomendeds}}
+                                            </span>
+                                            <span pInplaceContent>
+                                                <input type="text" [(ngModel)]="car.recomendeds" value="{{car.recomendeds}}" pInputText>
+                                            </span>
+                                        </p-inplace>
                                     </div>
                                 </div>
                             </div>
@@ -98,46 +137,3 @@
 </section>
 
 <p-growl [(value)]="msgs"></p-growl>
-
-<!-- MODAL -->
-<p-dialog header="Editar informacion" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
-    <div class="ui-grid ui-grid-responsive ui-fluid">
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-4">
-                <label for="vin">Numero de cuenta:</label>
-            </div>
-            <div class="ui-grid-col-8">
-                <input type="number" id="color" />
-            </div>
-        </div>
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-4">
-                <label for="year">Banco:</label>
-            </div>
-            <div class="ui-grid-col-8">
-                <input pInputText id="year"/>
-            </div>
-        </div>
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-4">
-                <label for="brand">Telefono:</label>
-            </div>
-            <div class="ui-grid-col-8">
-                <input pInputText id="brand"/>
-            </div>
-        </div>
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-4">
-                <label for="color">Recomendados:</label>
-            </div>
-            <div class="ui-grid-col-8">
-                <input type="number" id="color"/>
-            </div>
-        </div>
-    </div>
-    <p-footer>
-        <div class="ui-dialog-buttonpane ui-helper-clearfix">
-            <button type="button" pButton icon="fa-check" (click)="displayDialog = false" label="Save"></button>
-        </div>
-    </p-footer>
-</p-dialog>

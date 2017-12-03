@@ -41,6 +41,9 @@ export class ConexionService {
     });
     //});
   }
+  get_banks() {
+    return this.af.list('/banks');
+  }
  
   logout() {
     this.afAuth.auth.signOut();

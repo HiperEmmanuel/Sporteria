@@ -16,6 +16,7 @@ export class TableComponent implements OnInit {
    n: number;
    fecha = Date;
    es: any;
+  public banks: any[];
    ngOnInit() {
     this.es = {
         firstDayOfWeek: 1,
@@ -35,19 +36,24 @@ export class TableComponent implements OnInit {
    rangeDates: Date[];
    yearFilter: number;
   msgs: any[] = [];
+
    constructor(private conexion: ConexionService) {
   this.n = 2;
   
   // this.users.forEach(function(g){this.n++; });
   this.users = this.conexion.get_clientes();
+  this.conexion.get_banks().subscribe(f => this.banks = f);
   this.edited = new Array<boolean>(this.n);
    }
-
   showSuccess() {
     this.msgs = [];
+    this.banks.find(item => item.id === 1);
     this.msgs.push({ severity: 'success', summary: 'Clientes', detail: 'Guardado Satisfactoriamente' });
   }
 
+  get_bank_name(id){
+    this.banks.find(item => item.id === id).name;
+  }
    edit_selected(id: string) {
      this.edited[id] = !this.edited[id];
    }

@@ -24,7 +24,7 @@ import { ConexionService } from './conexion.service';
 import { BuscadorReporteComponent } from './components/buscador-reporte/buscador-reporte.component';
 import {InputTextModule} from 'primeng/primeng';
 import {FileUploadModule} from 'primeng/primeng';
-import { CaptchaModule, DialogModule} from 'primeng/primeng';
+import { CaptchaModule, DialogModule, InputSwitchModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 import {recaptcha2} from 'recaptcha2/index';
 
@@ -72,6 +72,7 @@ export const firebaseConfig = {
     InputMaskModule,
     SharedModule,
     InputTextModule,
+    InputSwitchModule,
     FileUploadModule,
     CaptchaModule,
     GrowlModule
