@@ -16,6 +16,20 @@ export class ConexionService {
     return this.afAuth.authState;
   }
 
+  public new_user(data, data2) {
+    this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password).then(
+      f => {
+        this.af.list('/users').subscribe(val => {data2.id = 1 + val.length;
+        data2.email = data.email;
+        });
+        const clientes = this.af.object('/cliente/' + data2.id);
+        clientes.set(data2);
+        return true;}
+    ).catch(
+      f => { return false; }
+    )
+  }
+
   public get_users() {
     return this.af.list('/ids');
   }

@@ -25,77 +25,77 @@
 
                         <form class="row col-12">
                             <div class="col-12 col-md-6 justify-content-center">
-                                <div class="form-group">
+                                <!--<div class="form-group">
                                     <label for="agregarForm">ID</label>
                                     <input type="number" class="form-control" placeholder="Numero de Usuario" required>
-                                </div>
+                                </div>-->
                                 <div class="form-group">
                                     <label for="agregarForm">Correo electrónico</label>
-                                    <input type="email" class="form-control" placeholder="correo@sporteria.mx" required>
+                                    <input [(ngModel)]='nacc.email' [ngModelOptions]="{standalone: true}" type="email" class="form-control" placeholder="correo@sporteria.mx" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Tag</label>
-                                    <input type="number" class="form-control" placeholder="" size="8">
+                                    <input [(ngModel)]='nafiliado.tag' [ngModelOptions]="{standalone: true}" type="number" class="form-control" placeholder="" size="8">
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Contraseña</label>
-                                    <input type="password" class="form-control" placeholder="******" required>
+                                    <input [(ngModel)]='nacc.password' [ngModelOptions]="{standalone: true}" type="password" class="form-control" placeholder="******" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Repetir contraseña</label>
-                                    <input type="password" class="form-control" placeholder="******" required>
+                                    <input [(ngModel)]='nacc.password2' [ngModelOptions]="{standalone: true}" type="password" class="form-control" placeholder="******" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">CURP</label>
-                                    <input type="text" class="form-control" placeholder="" size="18" required>
+                                    <input [(ngModel)]='nafiliado.curp' [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="" size="18" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Nombre</label>
-                                    <input type="text" class="form-control" placeholder="Nombre(s)" required>
+                                    <input [(ngModel)]='nafiliado.first_name' [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Nombre(s)" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Apellido Paterno</label>
-                                    <input type="text" class="form-control" placeholder="Apellido Paterno" required>
+                                    <input [(ngModel)]='nafiliado.app' [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Apellido Paterno" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Apellido Materno</label>
-                                    <input type="text" class="form-control" placeholder="Apellido Materno">
+                                    <input [(ngModel)]='nafiliado.apm' [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Apellido Materno">
                                 </div>
                                 <div class="form-inline">
                                     <label for="agregarForm" class="h6 m-3">Sexo:</label>
                                     <div class="form-check">
     
                                         <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="" id="" value="M" checked>
+                                        <input [(ngModel)]='nafiliado.sex' [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="" id="" value="M" checked>
                                             Masculino
                                     </label>
                                     </div>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="" id="" value="F">
+                                        <input [(ngModel)]='nafiliado.sex' [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="" id="" value="F">
                                             Femenino
                                     </label>
                                     </div>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="" id="" value="O">
+                                        <input [(ngModel)]='nafiliado.sex' [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="" id="" value="O">
                                             Otro
                                     </label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Numero celular</label>
-                                    <input type="tel" class="form-control" placeholder="" size="10" required>
+                                    <input [(ngModel)]='nafiliado.cel' [ngModelOptions]="{standalone: true}" type="tel" class="form-control" placeholder="" size="10" required>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 justify-content-center">                                
                                     <div class="form-group">
                                             <label for="agregarForm">Domicilio</label>
-                                            <input type="text" class="form-control" placeholder="Calle y numero">
+                                            <input [(ngModel)]='nafiliado.address' [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Calle y numero">
                                         </div>
                                 <div class="form-group">
                                     <label for="agregarForm">CP</label>
-                                    <input type="number" class="form-control" placeholder="Codigo Postal" minlength="5" required size="5">
+                                    <input [(ngModel)]='nafiliado.cp' [ngModelOptions]="{standalone: true}" type="number" class="form-control" placeholder="Codigo Postal" minlength="5" required size="5">
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Colonia/Fraccionamiento</label>
@@ -123,30 +123,30 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Banco</label>
-                                    <select name="Banco" class="form-control">
+                                    <select  [(ngModel)]='nafiliado.bank' [ngModelOptions]="{standalone: true}" name="Banco" class="form-control">
                                     <option value="1">Banamex</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Numero de tarjeta</label>
-                                    <input type="number" class="form-control" placeholder="" size="16">
+                                    <input [(ngModel)]='nafiliado.num_card' [ngModelOptions]="{standalone: true}" type="number" class="form-control" placeholder="" size="16">
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Clabe Interbancaria</label>
-                                    <input type="number" class="form-control" placeholder="" size="18">
+                                    <input [(ngModel)]='nafiliado.inter_key' [ngModelOptions]="{standalone: true}" type="number" class="form-control" placeholder="" size="18">
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Credito</label>
-                                    <input type="number" step="any" min="0" class="form-control" placeholder="">
+                                    <input [(ngModel)]='nafiliado.credit' [ngModelOptions]="{standalone: true}" type="number" step="any" min="0" class="form-control" placeholder="">
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Permisos</label>
-                                    <select name="Permisos" class="form-control">
+                                    <select [(ngModel)]='nafiliado.permisos' [ngModelOptions]="{standalone: true}" name="Permisos" class="form-control">
                                     <option value="1">Usuario</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" class="form-control btn-success glyphicon glyphicon-floppy-disk">
+                                    <input type="button" (click)='create_acc()' class="form-control btn-success glyphicon glyphicon-floppy-disk">
                                 </div>
                             </div>
                         </form>
