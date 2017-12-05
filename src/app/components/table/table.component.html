@@ -41,9 +41,12 @@
                     <span *ngIf='!car[col.field]'>N/A</span>
                 </ng-template>
             </p-column>
-            <p-column class="ui-datatable-responsive" field="pago" header="Pago" [filter]="true" [editable]="true" filterMatchMode="in">
+            <p-column class="ui-datatable-responsive" field="pago" header="Pago" [filter]="true" [editable]="true" (onChange)='showSuccess()' filterMatchMode="in">
+            <ng-template let-col let-car="rowData" pTemplate="editor">
+                <input type="number" [(ngModel)]="car[col.field]" (change)='saveClient2(car)' name="" id=""> 
+            </ng-template>
             </p-column>
-            <p-column class="ui-datatable-responsive" field="fecha" header="Fecha/pago" [filter]="true" [editable]="true" filterMatchMode="in">
+            <p-column class="ui-datatable-responsive" field="fecha" header="Fecha/pago" [filter]="true" [editable]="false" filterMatchMode="in">
                 <ng-template pTemplate="filter" let-col>
                    <div><p-calendar [(ngModel)]="rangeDates" selectionMode="range" [locale]="es" dateFormat="dd/mm/yy" readonlyInput="true"></p-calendar></div>
                 </ng-template>
@@ -55,6 +58,7 @@
                     <button (click)="saveClient(client)" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
                 </ng-template>
             </p-column>
+
             <ng-template let-car pTemplate="rowexpansion" expandedIcon="fa-pencil" collapsedIcon="fa-floppy-o ">
                 <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px">
                     <div class="ui-grid-row">

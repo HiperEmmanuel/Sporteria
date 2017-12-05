@@ -17,6 +17,7 @@ export class TableComponent implements OnInit {
    fecha = Date;
    es: any;
   public banks: any[];
+ 
    ngOnInit() {
     this.es = {
         firstDayOfWeek: 1,
@@ -45,6 +46,9 @@ export class TableComponent implements OnInit {
   this.conexion.get_banks().subscribe(f => this.banks = f);
   this.edited = new Array<boolean>(this.n);
    }
+   pum (){
+     console.log('hello world');
+   }
   showSuccess() {
     this.msgs = [];
     this.banks.find(item => item.id === 1);
@@ -64,6 +68,11 @@ export class TableComponent implements OnInit {
 
    sendtosavetoo(event) {
      this.conexion.Send(event);
+   }
+   saveClient2(data){
+     data.fecha = new Date().toISOString().slice(0,10);
+     this.conexion.SaveClient(data);
+     this.showSuccess();
    }
 
    saveClient(data) {
