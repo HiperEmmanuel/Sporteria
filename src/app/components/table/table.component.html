@@ -1,22 +1,16 @@
 <section class="Tabla animated fadeIn" role="grid">
-    <div *ngIf="this.nw">
-        <th><button (click)="add_nw()" type="button" class="btn btn-tabla-agregar btn- btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button></th>
-        
-        <app-form-edit (sendtosave)='sendtosavetoo($event);'></app-form-edit>
-    </div>
     <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
         <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
         <input #gb type="text" pInputText size="50" placeholder="Filtro Global">
-        <button (click)="add_nw()" type="button" class="btn btn-tabla-agregar btn- btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+        <button class="btn btn-tabla-agregar btn- btn-success" data-toggle="collapse" href="#agregarCliente" aria-expanded="false" aria-controls="agregarCliente"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
     </div>
     <div class="container-fluid">
         <div class="row justify-content-center ui-datatable">
-            <!-- assaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
-            
-        
-        <p-dataTable resizableColumns="true" [value]="users|async" [rows]="10" expandableRows="true" [editable]="true" [paginator]="true" [globalFilter]="gb" #dt>
+           
+            <app-form-edit></app-form-edit>
+        <p-dataTable resizableColumns="true" [value]="users|async" [rows]="10" expandableRows="true" [scrollable]="true" scrollHeight="800px" [editable]="true" [paginator]="true" [globalFilter]="gb" #dt>
             <p-header>Clientes</p-header>
-            <p-column class="ui-datatable-responsive" expander="true" styleClass="col-icon"></p-column>
+            <p-column class="ui-datatable-responsive" expander="true" styleClass="col-icon" header=""> </p-column>
             <p-column class="ui-datatable-responsive" field="id" header="ID" [filter]="true" filterPlaceholder="Buscar"></p-column>
             <p-column class="ui-datatable-responsive" field="name" header="Nombre" [filter]="true" filterPlaceholder="Buscar">
             </p-column>
