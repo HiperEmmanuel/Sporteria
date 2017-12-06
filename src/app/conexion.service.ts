@@ -29,6 +29,20 @@ export class ConexionService {
       f => { return false; }
     )
   }
+  login(event) {
+
+      try {
+      this.afAuth.auth.signInWithEmailAndPassword(event[0], event[1]).then(val => {
+        return true;
+      }
+      ).catch(function (error) {
+        return false;
+      });
+    }catch (e) {
+        return false;
+      }
+
+  }
 
   public get_users() {
     return this.af.list('/ids');
@@ -37,15 +51,7 @@ export class ConexionService {
    get_clientes() {
      return this.af.list('/cliente');
    }
-  login(event) {
-    //const email = this.af.object('/ids/' + event[0]);
-    //email.subscribe(ar => {
-      this.afAuth.auth.signInWithEmailAndPassword(event[0], event[1]).then(val => console.log('success')
-      ).catch(function (error) {
-        console.log(error.message);
-      });
-    //});
-  }
+
   reset(event) {
     //const email = this.af.object('/ids/' + event[0]);
     //email.subscribe(ar => {

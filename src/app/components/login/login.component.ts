@@ -11,6 +11,7 @@ export class LoginComponent {
   public password: string;
   public email:string;
   private info: string[];
+  funco: boolean= true;
   @Output() loge = new EventEmitter();
   constructor(private conexion: ConexionService, private router: Router) { }
 
@@ -22,7 +23,7 @@ export class LoginComponent {
 
   loguear(event) {
     this.info = [this.user, this.password];
-    this.conexion.login(this.info);
+    this.funco = this.conexion.login(this.info);
     // this.loge.emit(this.conexion.user);
   }
 }
