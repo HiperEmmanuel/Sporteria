@@ -17,6 +17,7 @@ export class TableComponent implements OnInit {
    fecha = Date;
    es: any;
   public banks: any[];
+  cargando = true;
  
    ngOnInit() {
     this.es = {
@@ -43,7 +44,8 @@ export class TableComponent implements OnInit {
   
   // this.users.forEach(function(g){this.n++; });
   this.users = this.conexion.get_clientes();
-  this.conexion.get_banks().subscribe(f => this.banks = f);
+  //setTimeout(() => { this.cargando = false; }, 4000)
+     this.conexion.get_banks().subscribe(f => { this.banks = f; this.cargando = false;});
   this.edited = new Array<boolean>(this.n);
    }
    pum (){

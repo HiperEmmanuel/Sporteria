@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InplaceModule, InputMaskModule, DataTableModule, SharedModule, CalendarModule, DropdownModule } from 'primeng/primeng';
+import { Http, HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import {FileUploadModule} from 'primeng/primeng';
 import { CaptchaModule, DialogModule, InputSwitchModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 import {recaptcha2} from 'recaptcha2/index';
+import { ResourceLoaderImpl } from '@angular/platform-browser-dynamic/src/resource_loader/resource_loader_impl';
 
 const routes: Routes = [
   { path: '', component: TableComponent },
@@ -63,6 +65,7 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     FormsModule,
     DialogModule,
+    HttpModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     DataTableModule,

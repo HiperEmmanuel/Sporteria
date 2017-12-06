@@ -4,16 +4,22 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
+import { Http, Response, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ConexionService {
   items: FirebaseListObservable<any[]>;
   public user: Observable<firebase.User>;
-  constructor(private router: Router, public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
+  constructor(private http: Http, private router: Router, public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
     this.user = afAuth.authState;
    }
   public get_auth() {
     return this.afAuth.authState;
+  }
+
+  get_cp(data) {
+    return this.http.get('https://api-codigos-postales.herokuapp.com/v2/codigo_postal/'+data).map(res => res.json());
   }
 
   public new_user(data, data2) {
@@ -29,7 +35,7 @@ export class ConexionService {
       f => { return false; }
     )
   }
-  login(event) {
+  login(event):boolean {
 
       try {
       this.afAuth.auth.signInWithEmailAndPassword(event[0], event[1]).then(val => {

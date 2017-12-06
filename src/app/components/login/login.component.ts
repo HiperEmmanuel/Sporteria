@@ -10,6 +10,7 @@ export class LoginComponent {
   public user: string;
   public password: string;
   public email:string;
+  cargando:boolean=false;
   private info: string[];
   funco: boolean= true;
   @Output() loge = new EventEmitter();
@@ -22,8 +23,9 @@ export class LoginComponent {
   }
 
   loguear(event) {
+    this.cargando = true;
     this.info = [this.user, this.password];
-    this.funco = this.conexion.login(this.info);
+    this.cargando = this.conexion.login(this.info);
     // this.loge.emit(this.conexion.user);
   }
 }

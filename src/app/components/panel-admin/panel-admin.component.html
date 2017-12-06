@@ -25,10 +25,10 @@
 
                         <form class="row col-12">
                             <div class="col-12 col-md-6 justify-content-center">
-                                <!--<div class="form-group">
-                                    <label for="agregarForm">ID</label>
-                                    <input type="number" class="form-control" placeholder="Numero de Usuario" required>
-                                </div>-->
+                                <div class="form-group">
+                                    <label for="agregarForm">ID de casino</label>
+                                    <input type="number" [(ngModel)]='nafiliado.casino' [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Casino" required>
+                                </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Correo electrónico</label>
                                     <input [(ngModel)]='nacc.email' [ngModelOptions]="{standalone: true}" type="email" class="form-control" placeholder="correo@sporteria.mx" required>
@@ -95,23 +95,23 @@
                                         </div>
                                 <div class="form-group">
                                     <label for="agregarForm">CP</label>
-                                    <input [(ngModel)]='nafiliado.cp' [ngModelOptions]="{standalone: true}" type="number" class="form-control" placeholder="Codigo Postal" minlength="5" required size="5">
+                                    <input [(ngModel)]='nafiliado.cp' [ngModelOptions]="{standalone: true}" (change)='updatece()' type="number" class="form-control" placeholder="Codigo Postal" minlength="5" required size="5">
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Colonia/Fraccionamiento</label>
-                                    <select name="ciudad" class="form-control">
+                                    <select [(ngModel)]='nafiliado.colonia' [ngModelOptions]="{standalone: true}" name="ciudad" class="form-control">
                                     <option value="1">JSON</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Ciudad</label>
-                                    <select name="ciudad" class="form-control" disabled>
+                                    <select [(ngModel)]='nafiliado.ciudad' [ngModelOptions]="{standalone: true}" name="ciudad" class="form-control" disabled>
                                     <option value="1">Aguascalientes</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Estado</label>
-                                    <select name="estado" class="form-control" disabled>
+                                    <select [(ngModel)]='nafiliado.estado' [ngModelOptions]="{standalone: true}" name="estado" class="form-control" disabled>
                                     <option value="1">Aguascalientes</option>
                                     </select>
                                 </div>
@@ -146,7 +146,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="button" (click)='create_acc()' class="form-control btn-success glyphicon glyphicon-floppy-disk">
+                                    <input type="button" (click)='create_acc()' value="Agregar" class="form-control btn-success glyphicon glyphicon-floppy-disk">
                                 </div>
                             </div>
                         </form>

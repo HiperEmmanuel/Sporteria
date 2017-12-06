@@ -9,9 +9,14 @@ import { ConexionService } from '../../conexion.service';
 export class PanelAdminComponent implements OnInit {
   nacc:any={};
   nafiliado:any={};
+  cp:any[] = [];
   constructor(private conexion: ConexionService) {
    }
-  
+  updatece(){
+    this.conexion.get_cp(this.nafiliado.cp).subscribe(val => {
+      this.cp = val;
+    });
+  }
   create_acc() {
     if (this.nacc.password == this.nacc.password2){
      if (this.conexion.new_user(this.nacc, this.nafiliado)) {

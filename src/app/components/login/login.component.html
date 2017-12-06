@@ -34,8 +34,11 @@
       <div class="modal-footer">
         <button type="button" (click)='reset()' class="btn btn-success" >Enviar</button>
       </div>
+      <div *ngIf='cargando'>
+        <img src="assets/images/carga.gif" alt="">
+        <p>Cargando ....</p>
+      </div>
     </div>
   </div>
 </div>
-  
 </section>
