@@ -44,6 +44,7 @@ guardarCliente() {
     Celular: this.agregarCliente.get('Celular').value,
     Sexo: this.agregarCliente.get('Sexo').value,
     Referido: this.agregarCliente.get('Referido').value,
+    Tag: this.agregarCliente.get('Tag').value,
     Banco: this.agregarCliente.get('Banco').value,
     Tarjeta: this.agregarCliente.get('Tarjeta').value,
     Clabe: this.agregarCliente.get('Clabe').value,
