@@ -48,8 +48,8 @@ guardarCliente() {
     Tarjeta: this.agregarCliente.get('Tarjeta').value,
     Clabe: this.agregarCliente.get('Clabe').value,
     Credito: this.agregarCliente.get('Credito').value,
-    Confirmacion: this.agregarCliente.get('Confirmacion').value,
-    Identificacion: this.agregarCliente.get('Identificacion').value
+    Confirmacion: 'aun no',//this.agregarCliente.get('Confirmacion').value,
+    Identificacion: ' aun no'//this.agregarCliente.get('Identificacion').value
   };
   return guardarCliente;
 }
@@ -100,26 +100,29 @@ guardarCliente() {
 @Output() sendtosave = new EventEmitter();
 
    save_client() {
+     var o = this.guardarCliente();
 this.new_obj = {
-'id': this.obj.id,
-'email': this.obj.email,
-'curp': this.obj.curp,
-'name': this.obj.name,
-'app': this.obj.app,
-'apm': this.obj.apm,
-'sex': this.obj.sex,
-'numcel': this.obj.numcel,
-'bank': this.obj.bank,
-'numcred': this.obj.numcred,
-'interkey': this.obj.interkey,
-'credit': this.obj.credit,
-'descuento': this.obj.descuento,
+'id': o.IDCasino,
+'email': o.Email,
+'curp': o.Curp,
+'name': o.Nombre,
+'app': o.Apellido,
+'apm': o.ApellidoM,
+'sex': o.Sexo,
+'numcel': o.Celular,
+'bank': o.Banco,
+'numcred': o.Tarjeta,
+'interkey': o.Clabe,
+'credit': o.Credito,
+'Confirmacion': o.Confirmacion,
+'Identificacion': o.Identificacion,
+'descuento': false,
 'saldo': this.obj.saldo,
 'pago': this.obj.pago,
 'fecha': this.obj.fecha,
 'nota': this.obj.nota,
 'registerdate': this.obj.registerdate,
-        'recomendeds': this.obj.recomendeds,
+'recomendeds': o.Referido,
        };
       this.sendtosave.emit(this.new_obj);
       this.obj = new Item;
