@@ -95,25 +95,21 @@
                                         </div>
                                 <div class="form-group">
                                     <label for="agregarForm">CP</label>
-                                    <input [(ngModel)]='nafiliado.cp' [ngModelOptions]="{standalone: true}" (change)='updatece()' type="number" class="form-control" placeholder="Codigo Postal" minlength="5" required size="5">
+                                    <input [(ngModel)]='cp' [ngModelOptions]="{standalone: true}" (input)='updatece()' type="number" class="form-control" placeholder="Codigo Postal" minlength="5" required size="5">
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Colonia/Fraccionamiento</label>
-                                    <select [(ngModel)]='nafiliado.colonia' [ngModelOptions]="{standalone: true}" name="ciudad" class="form-control">
-                                    <option value="1">JSON</option>
+                                    <select [(ngModel)]='nafiliado.colonias' [ngModelOptions]="{standalone: true}" name="ciudad" class="form-control">
+                                    <option *ngFor="let item of nafiliado.colonias" value="{{item}}">{{item}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Ciudad</label>
-                                    <select [(ngModel)]='nafiliado.ciudad' [ngModelOptions]="{standalone: true}" name="ciudad" class="form-control" disabled>
-                                    <option value="1">Aguascalientes</option>
-                                    </select>
+                                    <input [(ngModel)]='nafiliado.municipio' name="g" readonly type="text">
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Estado</label>
-                                    <select [(ngModel)]='nafiliado.estado' [ngModelOptions]="{standalone: true}" name="estado" class="form-control" disabled>
-                                    <option value="1">Aguascalientes</option>
-                                    </select>
+                                    <input type="text" readonly name="f" [(ngModel)]='nafiliado.estado'>
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Pais</label>

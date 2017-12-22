@@ -13,8 +13,9 @@ export class PanelAdminComponent implements OnInit {
   constructor(private conexion: ConexionService) {
    }
   updatece(){
-    this.conexion.get_cp(this.nafiliado.cp).subscribe(val => {
-      this.cp = val;
+    this.conexion.get_cp(this.cp).subscribe(val => {
+      console.log(val);
+      this.nafiliado = val;
     });
   }
   create_acc() {

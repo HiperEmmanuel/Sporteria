@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ConexionService {
   items: FirebaseListObservable<any[]>;
+  op:any;
   public user: Observable<firebase.User>;
   constructor(private http: Http, private router: Router, public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
     this.user = afAuth.authState;
@@ -23,22 +24,23 @@ export class ConexionService {
   }
 
   public new_user(data, data2) {
-    this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password).then(
-      f => {
-        this.af.list('/users').subscribe(val => {data2.id = 1 + val.length;
-        data2.email = data.email;
-        });
-        const clientes = this.af.object('/cliente/' + data2.id);
-        clientes.set(data2);
-        return true;}
-    ).catch(
-      f => { return false; }
+    this.af.list('/users').subscribe(val => {
+      data2.id = 1 + val.length;
+      data2.email = data.email;
+    });
+    const clientes = this.af.object('/users/' + data2.id);
+    clientes.set(data2);
+    
+    this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password).then(a => {
+      this.afAuth.auth.signInWithEmailAndPassword(this.op['u'], this.op['p']).then(f => {return true;});}
     )
   }
   login(event):boolean {
 
       try {
       this.afAuth.auth.signInWithEmailAndPassword(event[0], event[1]).then(val => {
+        this.op['u'] = event[0];
+        this.op['p'] = event[1];
         return true;
       }
       ).catch(function (error) {
