@@ -24,16 +24,19 @@ export class ConexionService {
   }
 
   public new_user(data, data2) {
-    this.af.list('/users').subscribe(val => {
-      data2.id = 1 + val.length;
-      data2.email = data.email;
-    });
+    data2.email = data.email;
+    data2.status = true;
+    this.af.list('/users').subscribe(val => {data2.id = 1 + val.length;} );
+    console.log(data2.id);
     const clientes = this.af.object('/users/' + data2.id);
     clientes.set(data2);
-    
-    this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password).then(a => {
-      this.afAuth.auth.signInWithEmailAndPassword(this.op['u'], this.op['p']).then(f => {return true;});}
-    )
+    this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password).then(a => console.log('success'));
+      //this.afAuth.auth.signInWithEmailAndPassword(this.op['u'], this.op['p']).then(f => {return true;});}
+  }
+  gogo2(){
+    var ss;
+    this.af.list('/users').subscribe(val => {ss=val; console.log(ss);});
+    console.log(ss);
   }
   login(event):boolean {
 
@@ -53,7 +56,7 @@ export class ConexionService {
   }
 
   public get_users() {
-    return this.af.list('/ids');
+    return this.af.list('/users');
   }
 
    get_clientes() {
@@ -78,7 +81,7 @@ export class ConexionService {
     this.router.navigate(['/']);
   }
   Send(event) {
-    this.af.list('/cliente').subscribe(val => event.id = 100 + val.length);
+    event.id = 100 + this.af.list('/cliente').map.length;
     const clientes = this.af.object('/cliente/' + event.id);
     clientes.set(event);  // .push({[event.id]: event});
   }

@@ -95,12 +95,12 @@
                                         </div>
                                 <div class="form-group">
                                     <label for="agregarForm">CP</label>
-                                    <input [(ngModel)]='cp' [ngModelOptions]="{standalone: true}" (input)='updatece()' type="number" class="form-control" placeholder="Codigo Postal" minlength="5" required size="5">
+                                    <input [(ngModel)]='cp["cp"]' [ngModelOptions]="{standalone: true}" (input)='updatece()' type="number" class="form-control" placeholder="Codigo Postal" minlength="5" required size="5">
                                 </div>
                                 <div class="form-group">
                                     <label for="agregarForm">Colonia/Fraccionamiento</label>
-                                    <select [(ngModel)]='nafiliado.colonias' [ngModelOptions]="{standalone: true}" name="ciudad" class="form-control">
-                                    <option *ngFor="let item of nafiliado.colonias" value="{{item}}">{{item}}</option>
+                                    <select [(ngModel)]='nafiliado.colonia' [ngModelOptions]="{standalone: true}" name="ciudad" class="form-control">
+                                    <option *ngFor="let item of cp['res']['colonias']" value="{{item}}">{{item}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -142,7 +142,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="button" (click)='create_acc()' value="Agregar" class="form-control btn-success glyphicon glyphicon-floppy-disk">
+                                    <input type="button" data-toggle="collapse" data-parent="#accordion" href="#agregarAfiliado" aria-expanded="false" aria-controls="aAfiliado" (click)='create_acc()' value="Agregar" class="form-control btn-success glyphicon glyphicon-floppy-disk">
                                 </div>
                             </div>
                         </form>

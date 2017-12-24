@@ -23,10 +23,10 @@ export class HeaderComponent {
         val.forEach(a => {
           if (a.email === em) {
             this.info = a;
-            if (this.info.permisos === 2) {
+            if (this.info.permisos == 2) {
               this.admin = true;
-              this.name = this.info.general.nombre;
             }
+            this.name = this.info.first_name + ' ' + this.info.app + ' ' +this.info.apm;
           }
         });
       });

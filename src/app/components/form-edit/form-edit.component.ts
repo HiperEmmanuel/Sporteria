@@ -90,6 +90,18 @@ guardarCliente() {
         Validators.required,
         Validators.minLength(18),
         Validators.maxLength(18)]
+      ],
+      Credito: ['', [
+        Validators.required]
+      ],
+      Banco: ['', [
+        Validators.required]
+      ],
+      Referido: ['', [
+        Validators.required]
+      ],
+      Sexo: ['', [
+        Validators.required]
       ]
     });
   }
