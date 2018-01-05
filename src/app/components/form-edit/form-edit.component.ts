@@ -3,6 +3,7 @@ import { FormGroup, FormArray, FormBuilder, Validators, ReactiveFormsModule , Ng
 import {FileUploadModule} from 'primeng/primeng';
 import {CaptchaModule} from 'primeng/primeng';
 import {recaptcha2} from 'recaptcha2/index';
+import { ConexionService } from '../../conexion.service'
 
 @Component({
   selector: 'app-form-edit',
@@ -16,7 +17,7 @@ export class FormEditComponent implements OnInit {
   obj = new Item;
   new_obj = {};
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private conexion:ConexionService) {
     this.obj.id = 0;
   this.obj.email = '';
   this.obj.curp = '';
@@ -76,6 +77,9 @@ guardarCliente() {
       Apellido: ['', [
         Validators.required]
       ],
+      ApellidoM: ['', [
+        Validators.required]
+      ],
       Celular: ['', [
         Validators.required,
       Validators.minLength(10),
@@ -102,6 +106,9 @@ guardarCliente() {
       ],
       Sexo: ['', [
         Validators.required]
+      ],
+      Tag: ['', [
+        Validators.required]
       ]
     });
   }
@@ -112,8 +119,8 @@ guardarCliente() {
 
 @Output() sendtosave = new EventEmitter();
 
-   save_client() {
-     var o = this.guardarCliente();
+save_client() {
+var o = this.guardarCliente();
 this.new_obj = {
 'id': o.IDCasino,
 'email': o.Email,
@@ -137,7 +144,7 @@ this.new_obj = {
 'registerdate': this.obj.registerdate,
 'recomendeds': o.Referido,
        };
-      this.sendtosave.emit(this.new_obj);
+      this.conexion.Send(this.new_obj);
       this.obj = new Item;
    }
 

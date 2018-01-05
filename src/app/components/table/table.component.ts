@@ -1,6 +1,11 @@
 import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { ConexionService } from '../../conexion.service';
+import { Query } from 'angularfire2/database/interfaces';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/switchMap';
+import * as Lodash from 'lodash';
 
 @Component({
   selector: 'app-table',
@@ -11,6 +16,8 @@ import { ConexionService } from '../../conexion.service';
 export class TableComponent implements OnInit {
   public nw: boolean;
   public users: FirebaseListObservable<any[]>;
+  size$: BehaviorSubject<string|null>;
+  public users2;
   @Output() sv = new EventEmitter();
    public edited: boolean[];
    n: number;
@@ -38,14 +45,35 @@ export class TableComponent implements OnInit {
    rangeDates: Date[];
    yearFilter: number;
   msgs: any[] = [];
-
+  private subscription;
+  filteredClient: any;
+  filters = {};
+  user1: Observable<any>;
    constructor(private conexion: ConexionService) {
+     this.user1 = this.conexion.get_auth();
   this.n = 2;
-  
-  // this.users.forEach(function(g){this.n++; });
-  this.users = this.conexion.get_clientes();
   //setTimeout(() => { this.cargando = false; }, 4000)
-     this.conexion.get_banks().subscribe(f => { this.banks = f; this.cargando = false;});
+     this.conexion.get_users().subscribe(val => {
+       var em;
+       var admin;
+       this.user1.subscribe(val2 => {
+         em = val2.email;
+         val.forEach(a => {
+           if (a.email === em) {
+             if (a.permisos != 2) {
+               this.filters['afiliado'] = val => val == this.conexion.get_uid();
+             }
+             this.subscription = this.conexion.get_clientes_by_user()
+               .subscribe(customers => {
+                 this.users2 = customers
+                 this.filteredClient = Lodash.filter(this.users2, Lodash.conforms(this.filters))
+               });
+           }
+         });
+       });
+     });
+     
+  this.conexion.get_banks().subscribe(f => { this.banks = f; this.cargando = false;});
   this.edited = new Array<boolean>(this.n);
    }
    pum (){

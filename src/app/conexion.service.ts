@@ -6,17 +6,46 @@ import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Archivo } from './models/archivo.model';
 
 @Injectable()
 export class ConexionService {
+  private basePath:string = '/afiliado';
+  uploads: FirebaseListObservable<Archivo[]>;
   items: FirebaseListObservable<any[]>;
   op:any;
   public user: Observable<firebase.User>;
   constructor(private http: Http, private router: Router, public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
     this.user = afAuth.authState;
    }
+   //--------------------------------------------------------------------------------
+   private saveFileData(upload:Archivo){
+     this.af.list('${this.basePath}/').push(upload);
+   }
+
+   pushupload(upload:Archivo){
+     const storageRef = firebase.storage().ref();
+     const uploadTask = storageRef.child('${this.basePath}/${upload.file.name}').put(upload.file);
+     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+    (snapshot) => {
+      upload.progress = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100;
+    },
+    (error) => {
+      console.log(error);
+    },
+    () => {
+      upload.url = uploadTask.snapshot.downloadURL;
+      upload.name = upload.file.name;
+      this.saveFileData(upload);
+    }
+    );
+   }
+   //--------------------------------------------------------------------------------
   public get_auth() {
     return this.afAuth.authState;
+  }
+  public get_uid(){
+    return this.afAuth.auth.currentUser.uid;
   }
 
   get_cp(data) {
@@ -33,11 +62,7 @@ export class ConexionService {
     this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password).then(a => console.log('success'));
       //this.afAuth.auth.signInWithEmailAndPassword(this.op['u'], this.op['p']).then(f => {return true;});}
   }
-  gogo2(){
-    var ss;
-    this.af.list('/users').subscribe(val => {ss=val; console.log(ss);});
-    console.log(ss);
-  }
+  
   login(event):boolean {
 
       try {
@@ -62,6 +87,9 @@ export class ConexionService {
    get_clientes() {
      return this.af.list('/cliente');
    }
+  get_clientes_by_user(query = {}): FirebaseListObservable<any[]> {
+    return this.af.list('/cliente', {query:query});
+  }
 
   reset(event) {
     //const email = this.af.object('/ids/' + event[0]);
@@ -81,9 +109,12 @@ export class ConexionService {
     this.router.navigate(['/']);
   }
   Send(event) {
-    event.id = 100 + this.af.list('/cliente').map.length;
+    event.afiliado = this.afAuth.auth.currentUser.uid;
+    this.af.list('/cliente').subscribe(val => { event.id = 100 + val.length; });
+    console.log('ok');
+    event.registerdate = new Date().toISOString().slice(0, 10);
     const clientes = this.af.object('/cliente/' + event.id);
-    clientes.set(event);  // .push({[event.id]: event});
+    clientes.set(event);
   }
   SaveClient(event) {
     const clientes = this.af.object('/cliente/' + event.id);
