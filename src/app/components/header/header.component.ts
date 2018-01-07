@@ -26,7 +26,7 @@ export class HeaderComponent {
             if (this.info.permisos == 2) {
               this.admin = true;
             }
-            this.name = this.info.first_name + ' ' + this.info.app + ' ' +this.info.apm;
+            this.name = this.info.first_name + ' ' + this.info.app;
           }
         });
       });
