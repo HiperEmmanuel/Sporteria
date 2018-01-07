@@ -1,0 +1,41 @@
+<div class="collapse" role="tabpanel" aria-labelledby="aBanco" id="agregarBanco">
+  <h5 class="text-center alert alert-info my-1">Proporcione la siguiente información.</h5>
+  <div class="row">
+
+      <form class="col-12 col-md-6 justify-content-center">
+          <div class="form-group">
+              <label for="agregarForm">Nombre del banco</label>
+              <input type="number" class="form-control" placeholder="" required>
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Pais</label>
+              <select name="pais" class="form-control">
+              <option value="1" selected>México</option>
+              <option value="2">Estados Unidos</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Status</label>
+              <select name="status" class="form-control">
+              <option value="1" selected>Desactivado</option>
+              <option value="2">Activo</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Moneda</label>
+               <select name="pais" class="form-control" disabled>
+                   <!-- Esto depende del pais que se coloque arriba -->
+              <option value="1" selected>MXN</option>
+              <option value="2">USD</option>
+              </select>
+          </div>
+
+          <div class="form-group">
+              <input type="submit" class="form-control btn-success">
+          </div>
+      </form>
+
+
+
+  </div>
+</div>

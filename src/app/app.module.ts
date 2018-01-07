@@ -29,6 +29,10 @@ import { CaptchaModule, DialogModule, InputSwitchModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 import {recaptcha2} from 'recaptcha2/index';
 import { ResourceLoaderImpl } from '@angular/platform-browser-dynamic/src/resource_loader/resource_loader_impl';
+import { AAfiliadoComponent } from './components/panel-admin/a-afiliado/a-afiliado.component';
+import { EAfiliadoComponent } from './components/panel-admin/e-afiliado/e-afiliado.component';
+import { EClienteComponent } from './components/panel-admin/e-cliente/e-cliente.component';
+import { ABancoComponent } from './components/panel-admin/a-banco/a-banco.component';
 
 const routes: Routes = [
   { path: '', component: TableComponent },
@@ -56,6 +60,10 @@ export const firebaseConfig = {
     ReporteComponent,
     AdminComponent,
     BuscadorReporteComponent,
+    AAfiliadoComponent,
+    EAfiliadoComponent,
+    EClienteComponent,
+    ABancoComponent,
   ],
   imports: [
     BrowserModule,
