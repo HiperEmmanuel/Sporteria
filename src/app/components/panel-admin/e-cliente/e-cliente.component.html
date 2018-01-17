@@ -1,3 +1,130 @@
 <div class="collapse" role="tabpanel" aria-labelledby="eCliente" id="editarCliente">
-  Aqui se podra editar a los clientes jaja.
+  
+  <table id="Tabla" class="table table-responsive table-inverse col-12 col-md-10">
+    <!-- table content here -->
+    <thead>
+        <tr>
+          <th><a type="button" class="btn btn-outline-info">Acciones</a></th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Fecha de registro</th>
+            <th>Telefono</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">
+                <div class="btn-group" role="group" aria-label="Botones">
+                    <button type="button" class="btn btn-secondary btn-info" title="Editar" data-toggle="modal" data-target="#editar-cliente"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-secondary btn-danger" title="Eliminar"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </div>
+            </th>
+            <td>200301</td>
+            <td>Morgan Freeman</td>
+            <td>2017-12-16</td>
+            <td>+1 332 211 3245</td>
+            
+        </tr>
+
+    </tbody>
+
+</table>
+<div class="modal fade" id="editar-cliente" tabindex="-1" role="dialog" aria-labelledby="editarcliente" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-warning" id="Titulo-cliente">Edición de cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-warning">
+        <form>
+          <div class="form-group">
+              <label for="agregarForm">ID</label>
+              <input type="number" class="form-control" placeholder="14111314" required>
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Correo electrónico</label>
+              <input type="email" class="form-control" placeholder="emmanuel@sporteria.mx" required>
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">CURP</label>
+              <input type="email" class="form-control" placeholder="LOLE960214HSLPRM06" size="18" required>
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Nombre</label>
+              <input type="email" class="form-control" placeholder="Emmanuel" required>
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Apellido Paterno</label>
+              <input type="email" class="form-control" placeholder="Lopez" required>
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Apellido Materno</label>
+              <input type="email" class="form-control" placeholder="Loera">
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Sexo</label>
+              <div class="form-check">
+
+                  <label class="form-check-label">
+                                      <input class="form-check-input" type="radio" name="" id="" value="M" checked>
+                                          Masculino
+                                  </label>
+              </div>
+              <div class="form-check">
+                  <label class="form-check-label">
+                                      <input class="form-check-input" type="radio" name="" id="" value="F">
+                                          Femenino
+                                  </label>
+              </div>
+              <div class="form-check">
+                  <label class="form-check-label">
+                                      <input class="form-check-input" type="radio" name="" id="" value="O">
+                                          Otro
+                                  </label>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Numero celular</label>
+              <input type="tel" class="form-control" placeholder="6671777617" size="10" required>
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Banco</label>
+              <select name="Banco" class="form-control">
+                                  <option value="1">Banamex</option>
+                                  </select>
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Numero de tarjeta</label>
+              <input type="number" class="form-control" placeholder="5200000000000000" size="16">
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Clabe Interbancaria</label>
+              <input type="number" class="form-control" placeholder="019283746583921029" size="18">
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Credito</label>
+              <input type="number" step="any" min="0" class="form-control" placeholder="2000.00">
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Foto de identificación oficial</label>
+              <input type="file" class="form-control-file" id="INE">
+          </div>
+          <div class="form-group">
+              <label for="agregarForm">Imagen de confirmación</label>
+              <input type="file" class="form-control-file" id="confirmacion">
+          </div>
+          <div class="form-group">
+              <input type="submit" class="form-control btn-success">
+          </div>
+        </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
