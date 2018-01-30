@@ -131,7 +131,7 @@
                 
             <p-growl [value]="msgsc" sticky="sticky"></p-growl>
             
-            <p-captcha siteKey="6LdM6TcUAAAAAClUMtihza2lUXmyD-hERDkLEpPE"  lenguage="es" theme="dark"></p-captcha>
+            <p-captcha (onResponse)="showResponse($event)" siteKey="6LdM6TcUAAAAAClUMtihza2lUXmyD-hERDkLEpPE"  lenguage="es" theme="dark"></p-captcha>
         
                 <input type="button" data-toggle="collapse" data-parent="#agregarCliente" aria-expanded="false" (click)='save_client()' class="form-control btn-success" value="Guardar">
             </div>

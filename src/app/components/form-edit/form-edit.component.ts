@@ -3,7 +3,9 @@ import { FormGroup, FormArray, FormBuilder, Validators, ReactiveFormsModule , Ng
 import {FileUploadModule} from 'primeng/primeng';
 import {CaptchaModule} from 'primeng/primeng';
 import {recaptcha2} from 'recaptcha2/index';
-import { ConexionService } from '../../conexion.service'
+import { ConexionService } from '../../conexion.service';
+import { FirebaseApp } from 'angularfire2';
+import 'firebase/storage';
 
 @Component({
   selector: 'app-form-edit',
@@ -17,6 +19,10 @@ export class FormEditComponent implements OnInit {
   obj = new Item;
   new_obj = {};
 
+  currentUpload:Archivo;
+  selectedFiles:FileList;
+  loading = false;
+  captcha:boolean = false;
   constructor(private formBuilder: FormBuilder, private conexion:ConexionService) {
     this.obj.id = 0;
   this.obj.email = '';
@@ -116,9 +122,21 @@ guardarCliente() {
   onSubmit(){
     
   }
-
+  detectFiles(event){
+    this.selectedFiles = event.target.files;
+  }
+  
+  uploadsingle() {
+    const file = this.selectedFiles.item(0);
+    this.currentUpload =  new Archivo(file);
+    this.loading = true;
+   // this.loadingService.pushUpload(this.currentUpload);
+  }
 @Output() sendtosave = new EventEmitter();
-
+  showResponse(event){
+    this.captcha = true;
+    console.log('captcha work!');
+  }
 save_client() {
 var o = this.guardarCliente();
 this.new_obj = {
@@ -149,6 +167,8 @@ this.new_obj = {
    }
 
 }
+
+
 
 export class Item {
   public id: number;
@@ -184,6 +204,17 @@ export class FileUploadDemo {
           this.msgs = [];
           this.msgs.push({severity: 'info', summary: 'Archivo subido', detail: 'La imagen ha sido subida con exito.'});
       }
+  }
+  export class  Archivo {
+    $key: string;
+    file: File;
+    name: string;
+    url: string;
+    progress: number;
+    createdAt: Date = new Date();
+    constructor(file:File){
+      this.file = file;
+    }
   }
   export class Captcha {
 

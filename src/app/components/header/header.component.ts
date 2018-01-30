@@ -15,6 +15,9 @@ export class HeaderComponent {
   name: string = '';
   admin = false;
   constructor(public conexion: ConexionService) {
+    this.update_up();
+  }
+  update_up(){
     this.user2 = this.conexion.get_auth();
     this.conexion.get_users().subscribe(val => {
       var em;
