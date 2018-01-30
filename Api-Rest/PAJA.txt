@@ -1,0 +1,49 @@
+******* Hagan "CD" hasta la carpeta api-rest y den "npm start".
+
+
+
+
+OBTENER TODOS LOS CLIENTES REFERIDOS POR "X" AFILIADO  ---(GET) 	http://localhost:3000/clientes/Juan Camaney
+REGISTRAR CLIENTE  ---------------------------------------(POST)	http://localhost:3000/clientes
+{
+		"CURP" : "PERRAZO904HSNKVN04",
+		"idCasino" : "1",
+		"correo" : "paja@paja.com",
+		"nombre" : "pajer",
+		"apellido1" : "pajaman",
+		"apellido2" : "maspaja",
+		"sexo" : "M",
+		"celular" : "6681520986",
+		"banco" : "1",
+		"nCuenta" : "123456789012345678",
+		"nClave" : "123456789012345678",
+		"fecha_registro" : "2017-10-10",
+		"identificacion" : "paja1234",
+		"confirmacionCasino" : "pajadeconfirmacion",
+		"fecha_modificacion" : "2017-10-10",
+		"referido_por" : "Juan Camaney",
+		"status": "Activo"
+}
+ACTUALIZAR DATOS CLIENTE----------------------------------(PUT)		http://localhost:3000/clientes/PACO960904HSLNVN90
+JSON con los datos actualizados...
+{
+		"CURP" : "PERRAZO904HSNKVN04",
+		"idCasino" : "1",
+		"correo" : "paja@paja.com",
+		"nombre" : "pajer",
+		"apellido1" : "pajaman",
+		"apellido2" : "maspaja",
+		"sexo" : "M",
+		"celular" : "6681520986",
+		"banco" : "1",
+		"nCuenta" : "123456789012345678",
+		"nClave" : "123456789012345678",
+		"fecha_registro" : "2017-10-10",
+		"identificacion" : "paja1234",
+		"confirmacionCasino" : "pajadeconfirmacion",
+		"fecha_modificacion" : "2017-10-10",
+		"referido_por" : "Juan Camaney",
+		"status": "Activo"
+}
+
+DAR DE BAJA----------------------------------------------- (DELETE) 
