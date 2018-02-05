@@ -6,6 +6,9 @@ import {recaptcha2} from 'recaptcha2/index';
 import { ConexionService } from '../../conexion.service';
 import { FirebaseApp } from 'angularfire2';
 import 'firebase/storage';
+import * as firebase from 'firebase/app';
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-form-edit',
@@ -18,7 +21,7 @@ export class FormEditComponent implements OnInit {
   mensaje: any;
   obj = new Item;
   new_obj = {};
-
+  recomendeds: any[];
   currentUpload:Archivo;
   selectedFiles:FileList;
   loading = false;
@@ -40,7 +43,7 @@ export class FormEditComponent implements OnInit {
   this.obj.recomendeds = 0;
    }
 
-guardarCliente() {
+guardarCliente(confi:string, ident:string) {
   const guardarCliente = {
     IDCasino: this.agregarCliente.get('IDCasino').value,
     Email: this.agregarCliente.get('Email').value,
@@ -56,12 +59,15 @@ guardarCliente() {
     Tarjeta: this.agregarCliente.get('Tarjeta').value,
     Clabe: this.agregarCliente.get('Clabe').value,
     Credito: this.agregarCliente.get('Credito').value,
-    Confirmacion: 'aun no',//this.agregarCliente.get('Confirmacion').value,
-    Identificacion: ' aun no'//this.agregarCliente.get('Identificacion').value
+    Confirmacion: confi,//this.agregarCliente.get('Confirmacion').value,
+    Identificacion: ident//this.agregarCliente.get('Identificacion').value
   };
   return guardarCliente;
 }
+
    ngOnInit() {
+     this.recomendeds = [];
+     this.conexion.get_clientes().subscribe(arr => this.recomendeds = arr);
     this.agregarCliente = this.formBuilder.group({
       IDCasino: ['', [
         Validators.required,
@@ -124,12 +130,22 @@ guardarCliente() {
   }
   detectFiles(event){
     this.selectedFiles = event.target.files;
+    console.log('sdfs');
   }
   
-  uploadsingle() {
-    const file = this.selectedFiles.item(0);
+  uploadsingle(img: string):any {
+    const file = (document.getElementById(img) as HTMLInputElement).files[0];
+   //  = this.selectedFiles.item(0);
     this.currentUpload =  new Archivo(file);
     this.loading = true;
+    console.log('pero');
+    var fn = file.name + Date.now().toString()
+    const strref = firebase.storage().ref().child('afiliado/identificacion/' + fn);
+    strref.put(file).then(ok => {console.log('todo bien');
+    return fn
+  }).catch(sd => {
+    return "no have";
+  });
    // this.loadingService.pushUpload(this.currentUpload);
   }
 @Output() sendtosave = new EventEmitter();
@@ -138,7 +154,12 @@ guardarCliente() {
     console.log('captcha work!');
   }
 save_client() {
-var o = this.guardarCliente();
+  if (this.captcha){
+    const ident:string = this.uploadsingle('file');
+    const confi:string = this.uploadsingle('file2');
+    var o = this.guardarCliente(confi, ident);
+
+console.log('aki si');
 this.new_obj = {
 'id': o.IDCasino,
 'email': o.Email,
@@ -164,6 +185,8 @@ this.new_obj = {
        };
       this.conexion.Send(this.new_obj);
       this.obj = new Item;
+    $('op').trigger('click');
+  }
    }
 
 }
